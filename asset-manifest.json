@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/PetMatch/static/css/main.08b65ced.css",
+    "main.js": "/PetMatch/static/js/main.495b6a50.js",
+    "static/js/787.4e0648ff.chunk.js": "/PetMatch/static/js/787.4e0648ff.chunk.js",
+    "static/media/logo.jpg": "/PetMatch/static/media/logo.6dee151b97a46ea28683.jpg",
+    "index.html": "/PetMatch/index.html",
+    "main.08b65ced.css.map": "/PetMatch/static/css/main.08b65ced.css.map",
+    "main.495b6a50.js.map": "/PetMatch/static/js/main.495b6a50.js.map",
+    "787.4e0648ff.chunk.js.map": "/PetMatch/static/js/787.4e0648ff.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.08b65ced.css",
+    "static/js/main.495b6a50.js"
+  ]
+}

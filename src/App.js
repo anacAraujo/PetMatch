@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import HomePage from './components/homepage';
 import Login from './components/login';
 import Profile from './components/profile';

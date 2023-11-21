@@ -4,7 +4,7 @@
 
 .App-header {
   background-color: #36636d;
-  background-image: url(../src/assets/img/logo.jpg);
+  background-image: url(../assets/img/logo.jpg);
   background-repeat: no-repeat;
   background-size: 100vw, auto;
   min-height: 90vh;

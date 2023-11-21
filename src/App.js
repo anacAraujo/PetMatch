@@ -1,17 +1,28 @@
 import './App.css';
+import HomePage from './components/homepage';
+import Login from './components/login';
+import Profile from './components/profile';
+import SignUp from './components/signup';
+import Layout from './layout';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react';
+export const UserContext = React.createContext();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>PET MATCH</h1>
-        <p>Find your PURRFECT companion!</p>
-      </header>
-      <div>
-        <h2>Project in progress...</h2>
-        <p>Project carried out within the scope of the curricular unit Advanced Technologies for Client-Side, at the University of Aveiro.</p>
-      </div>
-    </div>
+
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout></Layout>}>
+          <Route index element={<HomePage></HomePage>}></Route>
+          <Route path="/components/login" element={<Login></Login>} ></Route>
+          <Route path="/components/signup" element={<SignUp></SignUp>} ></Route>
+          <Route path="/components/profile" element={<Profile></Profile>}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+
+
   );
 }
 

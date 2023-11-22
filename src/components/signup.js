@@ -20,7 +20,10 @@ export default function SignUp() {
             } catch {
                 setNotice("Sorry, something went wrong. Please try again.");
             }
-        } else {
+        } else if (password.length < 6) {
+            setNotice("Password must be at least 6 characters long.");
+            
+        } else{
             setNotice("Passwords don't match. Please try again.");
         }
     };
@@ -50,7 +53,7 @@ export default function SignUp() {
                         <button type="submit" className="btn btn-primary pt-3 pb-3" onClick={(e) => signupWithUsernameAndPassword(e)}>Sign Up</button>
                     </div>
                     <div className="mt-3 text-center">
-                        <span>Go back to login? <Link to="../login">Click here.</Link></span>
+                        <span>Go back to login? <Link to="../components/login">Click here.</Link></span>
                     </div>
                 </form>
             </div>

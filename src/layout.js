@@ -14,47 +14,50 @@ export default function Layout() {
     if (isLog === true) {
         return (
             <UserContext.Provider value={{ isLogado: isLog, func: updateIsLog }}>
-                <div className="container-fluid">
-                    <div className="row justify-content-center mt-3">
-                        <div className="col-md-4 text-center">
+                <div>
+                    <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+                        <div className="container-fluid">
+                            <a className="navbar-brand" href="#">PET MATCH</a>
+                            <div className="collapse navbar-collapse" id="navbarText">
+                                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" aria-current="page" to="/">Home</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/components/profile">Profile</Link>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <Link to="/">Home</Link>
-                                </li>
-                                <li>
-                                    <Link to="/components/profile">Profile</Link>
-                                </li>
-                            </ul>
-                        </nav>
-
-                        <Outlet />
-                    </div>
+                    </nav>
+                    <Outlet />
                 </div>
+
             </UserContext.Provider>
         )
     } else {
         return (
             <UserContext.Provider value={{ isLogado: isLog, func: updateIsLog }}>
 
-                <div className="container-fluid">
-                    <div className="row justify-content-center mt-3">
-                        <div className="col-md-4 text-center">                        </div>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <Link to="/">Home</Link>
-                                </li>
-                                <li>
-                                    <Link to="/components/login">Login</Link>
-                                </li>
-                            </ul>
-                        </nav>
-
-                        <Outlet />
-                    </div>
+                <div>
+                    <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+                        <div className="container-fluid">
+                            <a className="navbar-brand" href="#">PET MATCH</a>
+                            <div className="collapse navbar-collapse" id="navbarText">
+                                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" aria-current="page" to="/">Home</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/components/login">Login</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <Outlet />
                 </div>
+
             </UserContext.Provider>
 
         )

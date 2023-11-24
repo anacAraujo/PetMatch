@@ -63,7 +63,7 @@ export default function Login() {
                             <button type="submit" className="button w-100 font-weight-bold mt-2"><i className="fa fa-facebook" aria-hidden="true"></i> Login With Facebook</button>
                         </div>
                         <div className="pt-4 text-center">
-                            Need to sign up for an account? <Link className="color-purple" to="../components/signup">Click here.</Link>
+                            Need to sign up for an account? <Link className="color-purple" to="../signup">Click here.</Link>
                         </div>
                     </div>
 

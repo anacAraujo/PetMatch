@@ -1,7 +1,7 @@
 import React from "react";
 import tokenData from "./getToken";
 
-export default function getDogs() {
+export default async function getDogs() {
     let token = tokenData();
 
     console.log("token: " + token);

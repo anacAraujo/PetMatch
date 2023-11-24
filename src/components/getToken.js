@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function tokenData() {
+export default async function tokenData() {
     const CLIENTID = "WK71sClQEcU6kJerMGLmgNPaJigcuIHwOdFdJFj9oupXOG710l";
     const CLIENTSECRET = "3thR6A98P4nWHgkULqvkfVzWh36TcLTuMSg8PttZ";
 

@@ -1,4 +1,5 @@
 import React from "react";
+import getDogs from "./getDogs";
 
 export default async function tokenData() {
     const CLIENTID = "WK71sClQEcU6kJerMGLmgNPaJigcuIHwOdFdJFj9oupXOG710l";
@@ -16,7 +17,9 @@ export default async function tokenData() {
         });
         const token = await response.json();
         console.log(token);
+     
         tokenData = token.access_token;
+        getDogs(tokenData);
     }
 
     getToken();

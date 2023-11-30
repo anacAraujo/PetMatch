@@ -4,8 +4,9 @@ import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../layout";
-import loginImg from "../assets/img/login-dog.jpg"
+import loginImg from "../assets/images/login-dog.jpg"
 import getDogs from "./getDogs";
+import tokenData from "./getToken";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -26,6 +27,11 @@ export default function Login() {
             setNotice("You entered a wrong username or password.");
         }
     }
+    const test = async (e) => {
+        
+                let a =await tokenData()
+                console.log("token 1: " +  a);
+            }
 
     return (
         <div className="container">
@@ -51,7 +57,7 @@ export default function Login() {
                             <div className="d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center"><input name="" type="checkbox" value="" /> <span className="pl-2 font-weight-bold">Remember Me</span></div>
                                 {/* TODO: Add password reset functionality */}
-                                <div ><a className="color-purple" href="#" onClick={() => getDogs()}>Forget Password?</a></div>
+                                <div ><a className="color-purple" href="#" onClick={() => {test()}}>Forget Password?</a></div>
                             </div>
                             <div className="pb-2">
                                 <button type="submit" className="btn btn-dark w-100 font-weight-bold mt-2" onClick={(e) => loginWithUsernameAndPassword(e)}>Submit</button>
@@ -63,7 +69,7 @@ export default function Login() {
                             <button type="submit" className="button w-100 font-weight-bold mt-2"><i className="fa fa-facebook" aria-hidden="true"></i> Login With Facebook</button>
                         </div>
                         <div className="pt-4 text-center">
-                            Need to sign up for an account? <Link className="color-purple" to="../signup">Click here.</Link>
+                            Need to sign up for an account? <Link className="color-purple" to="/signup">Click here.</Link>
                         </div>
                     </div>
 

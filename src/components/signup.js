@@ -53,7 +53,7 @@ export default function SignUp() {
                         <button type="submit" className="btn btn-primary pt-3 pb-3" onClick={(e) => signupWithUsernameAndPassword(e)}>Sign Up</button>
                     </div>
                     <div className="mt-3 text-center">
-                        <span>Go back to login? <Link to="../login">Click here.</Link></span>
+                        <span>Go back to login? <Link to="/login">Click here.</Link></span>
                     </div>
                 </form>
             </div>

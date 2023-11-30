@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import React, { useState } from "react";
+import { IoPersonCircleSharp } from "react-icons/io5";
 export const UserContext = React.createContext();
-
 
 export default function Layout() {
 
@@ -17,14 +17,16 @@ export default function Layout() {
                 <div>
                     <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
                         <div className="container-fluid">
-                            <a className="navbar-brand" href="#">PET MATCH</a>
+                            <Link className="navbar-brand" to="/">PET MATCH</Link>
                             <div className="collapse navbar-collapse" id="navbarText">
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li className="nav-item">
-                                        <Link className="nav-link" aria-current="page" to="/">Home</Link>
+                                        <Link className="nav-link" to="/profile">Pppp</Link>
                                     </li>
+                                </ul>
+                                <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/profile">Profile</Link>
+                                        <Link className="nav-link" to="/profile"><IoPersonCircleSharp size={30}></IoPersonCircleSharp></Link>
                                     </li>
                                 </ul>
                             </div>
@@ -42,12 +44,9 @@ export default function Layout() {
                 <div>
                     <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
                         <div className="container-fluid">
-                            <a className="navbar-brand" href="#">PET MATCH</a>
+                            <Link className="navbar-brand" to="/">PET MATCH</Link>
                             <div className="collapse navbar-collapse" id="navbarText">
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                                    <li className="nav-item">
-                                        <Link className="nav-link" aria-current="page" to="/">Home</Link>
-                                    </li>
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/login">Login</Link>
                                     </li>

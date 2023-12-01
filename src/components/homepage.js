@@ -1,4 +1,5 @@
 import React from "react";
+import Form from "./form";
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
         <h2>Our Mission</h2>
         <p>Our mission is to find the best match for you and your pet!</p>
       </div>
+      <Form></Form>
     </div>
   );
 }

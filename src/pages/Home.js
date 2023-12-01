@@ -1,10 +1,12 @@
-import React from "react";
-import Quiz from "./Quiz";
+import React from 'react';
+import Quiz from '../components/Quiz';
 
-export default function HomePage() {
+import '../assets/styles/pages/Home.scss';
+
+export default function Home() {
   return (
-    <div >
-      <header className="App-header">
+    <div>
+      <header className="header">
         <h1>PET MATCH</h1>
         <p>Find your PURRFECT companion!</p>
       </header>

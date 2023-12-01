@@ -1,0 +1,25 @@
+@import 'colors';
+
+.App {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  height: 50px;
+}
+
+.form-style input {
+  border: 0;
+  height: 50px;
+  border-radius: 0;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.form-style input:focus {
+  border-bottom: 1px solid $primary;
+  box-shadow: none;
+  outline: 0;
+  background-color: #ebebeb;
+}

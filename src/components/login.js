@@ -1,12 +1,19 @@
 import React, { useState } from "react";
-import "../styles/login.css";
+import "../styles/login.scss";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../layout";
-import loginImg from "../assets/images/login-dog.jpg"
-import getDogs from "./getDogs";
+import loginImg from "../assets/images/login-dog.jpg";
 import tokenData from "./getToken";
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
+import { FaFacebookSquare } from "react-icons/fa";
+
 
 export default function Login() {
     const navigate = useNavigate();
@@ -28,53 +35,56 @@ export default function Login() {
         }
     }
     const test = async (e) => {
-        
-                let a =await tokenData()
-                console.log("token 1: " +  a);
-            }
+
+        let a = await tokenData()
+        console.log("token 1: " + a);
+    }
 
     return (
-        <div className="container">
-            <div className="row m-5 no-gutters shadow-lg">
-                <div className="col-md-6 d-none d-md-block">
+        <Container>
+            <Row className="m-5 no-gutters shadow-lg">
+                <Col className=" d-none d-md-block">
                     <img src={loginImg} className="img-fluid" />
-                </div>
-                <div className="col-md-6 bg-white p-5">
+                </Col>
+                <Col className=" g-white p-5">
                     {"" !== notice &&
                         <div className="alert alert-warning" role="alert">
                             {notice}
                         </div>
                     }
                     <h3 className="pb-3">Login</h3>
-                    <div className="form-style">
-                        <form>
-                            <div className="form-group pb-3">
-                                <input type="email" placeholder="Email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                            </div>
-                            <div className="form-group pb-3">
-                                <input type="password" placeholder="Password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e) => setPassword(e.target.value)}></input>
-                            </div>
-                            <div className="d-flex align-items-center justify-content-between">
-                                <div className="d-flex align-items-center"><input name="" type="checkbox" value="" /> <span className="pl-2 font-weight-bold">Remember Me</span></div>
-                                {/* TODO: Add password reset functionality */}
-                                <div ><a className="color-purple" href="#" onClick={() => {test()}}>Forget Password?</a></div>
-                            </div>
-                            <div className="pb-2">
-                                <button type="submit" className="btn btn-dark w-100 font-weight-bold mt-2" onClick={(e) => loginWithUsernameAndPassword(e)}>Submit</button>
-                            </div>
-                        </form>
+                    <Form >
+                        <div className="form-style mb-3">
+                            <Form.Control className="mb-2" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <Form.Control className="mb-2" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        </div>
+                        <div className="d-flex align-items-center justify-content-between">
+                            <Form.Check className="mb-3 "
+                                type='checkbox'
+                                id='default-checkbox'
+                                label='Remember Me' //TODO
+                            />
+                            <Link className="color-purple" onClick={() => { test() }}>Forget Password?</Link>
+                            {/* TODO: Add password reset functionality */}
+                        </div>
+                        <div className="d-grid gap-2">
+                            <Button variant="dark" onClick={(e) => loginWithUsernameAndPassword(e)}>
+                                Login
+                            </Button>
+                        </div>
                         <div className="sideline">OR</div>
-                        <div>
-                            {/* TODO: Add Facebook or Google login functionality */}
-                            <button type="submit" className="button w-100 font-weight-bold mt-2"><i className="fa fa-facebook" aria-hidden="true"></i> Login With Facebook</button>
+                        <div className="d-grid gap-2">
+                            <Button variant="primary">
+                                <FaFacebookSquare className="mx-2" />
+                                Login With Facebook
+                            </Button>  {/* TODO: Add Facebook or Google login functionality */}
                         </div>
                         <div className="pt-4 text-center">
                             Need to sign up for an account? <Link className="color-purple" to="/signup">Click here.</Link>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
     );
 }

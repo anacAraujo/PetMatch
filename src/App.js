@@ -1,4 +1,4 @@
-import './styles/App.css';
+import './styles/App.scss';
 import HomePage from './components/homepage';
 import Login from './components/login';
 import Profile from './components/profile';
@@ -10,19 +10,18 @@ export const UserContext = React.createContext();
 
 function App() {
   return (
-
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout></Layout>}>
-          <Route index element={<HomePage></HomePage>}></Route>
-          <Route path="/login" element={<Login></Login>} ></Route>
-          <Route path="/signup" element={<SignUp></SignUp>} ></Route>
-          <Route path="/profile" element={<Profile></Profile>}></Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-
-
+    <div className='App'>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout></Layout>}>
+            <Route index element={<HomePage></HomePage>}></Route>
+            <Route path="/login" element={<Login></Login>} ></Route>
+            <Route path="/signup" element={<SignUp></SignUp>} ></Route>
+            <Route path="/profile" element={<Profile></Profile>}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

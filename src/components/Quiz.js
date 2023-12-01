@@ -1,21 +1,34 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-export default function Form() {
+export default function Quiz() {
 
     return (
-        <div className="container">
-            <div className="row m-5 no-gutters shadow-lg">
-                <div className="col-md-6 d-none d-md-block">
-                    <img src={""} className="img-fluid" />
-                </div>
+        <Container>
+            <Row className="m-5 no-gutters shadow-lg">
+                <h3 className="pb-3 mt-4">About Me</h3>
+                <p>Tell us about your lifestyle and preferences</p>
+                <Col>
+                    <Form.Select aria-label="Default select example">
+                        <option>Select an animal</option>
+                        <option value="1">Cat</option>
+                        <option value="2">Dog</option>
+                    </Form.Select>
+                </Col>
+                <Col>
+
+                </Col>
                 <div className="col-md-6 bg-white p-5">
                     {/* {"" !== notice &&
                         <div className="alert alert-warning" role="alert">
                             {notice}
                         </div>
                     } */}
-                    <h3 className="pb-3">Login</h3>
+
                     <div className="form-style">
                         <form>
                             <div className="form-group pb-3">
@@ -36,7 +49,7 @@ export default function Form() {
                         <div className="sideline">OR</div>
                         <div>
                             {/* TODO: Add Facebook or Google login functionality */}
-                            <button type="submit" className="button w-100 font-weight-bold mt-2"><i className="fa fa-facebook" aria-hidden="true"></i> Login With Facebook</button>
+                            <button type="submit" className="button w-100 font-weight-bold mt-2"><i aria-hidden="true"></i> Login With Facebook</button>
                         </div>
                         <div className="pt-4 text-center">
                             Need to sign up for an account? <Link className="color-purple" to="/signup">Click here.</Link>
@@ -44,7 +57,8 @@ export default function Form() {
                     </div>
 
                 </div>
-            </div>
-        </div>
+            </Row>
+
+        </Container>
     )
 }

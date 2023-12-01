@@ -1,9 +1,9 @@
 import React from "react";
-import Form from "./form";
+import Quiz from "./Quiz";
 
 export default function HomePage() {
   return (
-    <div className="App">
+    <div >
       <header className="App-header">
         <h1>PET MATCH</h1>
         <p>Find your PURRFECT companion!</p>
@@ -12,7 +12,7 @@ export default function HomePage() {
         <h2>Our Mission</h2>
         <p>Our mission is to find the best match for you and your pet!</p>
       </div>
-      <Form></Form>
+      <Quiz></Quiz>
     </div>
   );
 }

@@ -1,30 +1,32 @@
-import tokenData from '../utils/getToken';
 import CardAnimal from './CardAnimal';
+import petfinder from '../utils/petfinder';
+import { useState, useEffect } from 'react';
 
 export default function ListAnimals() {
-  const getAnimals = async (animals) => {
-    let animalsInfo = await tokenData();
-    return animalsInfo.animals;
-  };
+  const [animals, setAnimals] = useState([]);
 
-  const displayAnimalInfo = animalsInfo.map((animal, idx) => (
-    <CardAnimal
-      key={animal.id}
-      name={animal.name}
-      breed={animal.breeds[2]}
-      age={animal.age}
-      photo={animal.photos[0]}
-    ></CardAnimal>
-  ));
+  useEffect(() => {
+    async function getAnimals() {
+      const result = await petfinder.getAnimals();
+      setAnimals(result);
+      console.log('Animals: ', result);
+    }
+    getAnimals();
+  }, []);
 
   return (
-    <div
-      onLoad={() => {
-        getAnimals();
-      }}
-    >
-      <h1>Animals</h1>
-      <ul>{displayAnimalInfo}</ul>
+    <div>
+      <ul>
+        {animals.map((animal) => (
+          <CardAnimal
+            key={animal.id}
+            name={animal.name}
+            breed={animal.breeds.primary}
+            age={animal.age}
+            photo={animal.photos[0].medium}
+          ></CardAnimal>
+        ))}
+      </ul>
     </div>
   );
 }

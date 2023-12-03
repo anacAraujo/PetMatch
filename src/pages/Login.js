@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../components/Header';
 import loginImg from '../assets/images/login-dog.jpg';
-import tokenData from '../utils/getToken';
+import petfinder from '../utils/petfinder';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -34,8 +34,8 @@ export default function Login() {
     }
   };
   const test = async (e) => {
-    let a = await tokenData();
-    console.log('token 1: ' + a);
+    let a = await petfinder.getAnimals();
+    console.log('Animals: ', a);
   };
 
   return (

@@ -27,7 +27,7 @@ export default function Header() {
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
                     <Link className="nav-link" to="/profile">
-                      Pppp
+                      profile
                     </Link>
                   </li>
                 </ul>
@@ -76,9 +76,9 @@ export default function Header() {
 
                 <Nav>
                   <Nav.Link href="#deets">More deets</Nav.Link>
-                  <Nav.Link eventKey={2} href="#memes">
-                    Dank memes
-                  </Nav.Link>
+                  <Link className="nav-link" to="/breedinfo">
+                    Breeds
+                  </Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>

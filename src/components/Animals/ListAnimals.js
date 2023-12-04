@@ -1,5 +1,5 @@
 import CardAnimal from './CardAnimal';
-import petfinder from '../utils/petfinder';
+import petfinder from '../../utils/petfinder';
 import { useState, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 
@@ -24,6 +24,8 @@ export default function ListAnimals() {
           breed={animal.breeds.primary}
           age={animal.age}
           photo={animal.photos[0].medium}
+          gender={animal.gender}
+          description={animal.description}
         ></CardAnimal>
       ))}
     </Row>

@@ -1,14 +1,13 @@
 .header {
-  background-color: #36636d;
   background-image: url(../../images/home-cats.jpg);
   background-repeat: no-repeat;
   background-size: 100vw, auto;
+  object-fit: cover;
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: #f1f2eb;
   font-size: 30px;
   font-family: 'Montserrat', sans-serif;

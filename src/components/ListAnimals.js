@@ -1,6 +1,7 @@
 import CardAnimal from './CardAnimal';
 import petfinder from '../utils/petfinder';
 import { useState, useEffect } from 'react';
+import Row from 'react-bootstrap/Row';
 
 export default function ListAnimals() {
   const [animals, setAnimals] = useState([]);
@@ -15,18 +16,16 @@ export default function ListAnimals() {
   }, []);
 
   return (
-    <div>
-      <ul>
-        {animals.map((animal) => (
-          <CardAnimal
-            key={animal.id}
-            name={animal.name}
-            breed={animal.breeds.primary}
-            age={animal.age}
-            photo={animal.photos[0].medium}
-          ></CardAnimal>
-        ))}
-      </ul>
-    </div>
+    <Row>
+      {animals.map((animal) => (
+        <CardAnimal
+          key={animal.id}
+          name={animal.name}
+          breed={animal.breeds.primary}
+          age={animal.age}
+          photo={animal.photos[0].medium}
+        ></CardAnimal>
+      ))}
+    </Row>
   );
 }

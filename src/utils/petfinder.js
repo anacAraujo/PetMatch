@@ -23,7 +23,7 @@ async function getToken() {
   return token;
 }
 
-async function getAnimals(type = 'dog', limit = 2, sort = 'random', good_with_children) {
+async function getAnimals(type = 'dog', limit = 4, sort = 'random', good_with_children) {
   try {
     let token = await getToken();
     console.log('token: ' + token);

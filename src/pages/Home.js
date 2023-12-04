@@ -1,5 +1,4 @@
 import React from 'react';
-import Quiz from '../components/Quiz';
 import Container from 'react-bootstrap/Container';
 import ListAnimals from '../components/ListAnimals';
 
@@ -17,8 +16,8 @@ export default function Home() {
           <h2>Our Mission</h2>
           <p>Our mission is to find the best match for you and your pet!</p>
         </div>
+        <ListAnimals></ListAnimals>
       </Container>
-      <ListAnimals></ListAnimals>
     </div>
   );
 }

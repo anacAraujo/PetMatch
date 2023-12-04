@@ -1,16 +1,14 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import dog from '../assets/images/exemple-dog.jpg';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
 
 export default function CardAnimal(props) {
   const { name, breed, age, photo } = props;
 
   return (
-    <div>
+    <Col>
       <Card style={{ width: '18rem' }} className="mx-2">
-        <Card.Img variant="top" src={photo} />
+        <Card.Img xs={6} md={4} variant="top" src={photo} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>
@@ -27,6 +25,6 @@ export default function CardAnimal(props) {
           <Card.Link href="#">Another Link</Card.Link>
         </Card.Body>
       </Card>
-    </div>
+    </Col>
   );
 }

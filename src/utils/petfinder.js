@@ -23,7 +23,7 @@ async function getToken() {
   return token;
 }
 
-async function getAnimals(type = 'dog', limit = 4, sort = 'random', good_with_children) {
+async function getAnimals(type = 'dog', breed, limit = 4, sort = 'random', good_with_children) {
   try {
     let token = await getToken();
     console.log('token: ' + token);
@@ -35,6 +35,10 @@ async function getAnimals(type = 'dog', limit = 4, sort = 'random', good_with_ch
 
     if (good_with_children) {
       url.searchParams.append('good_with_children', good_with_children);
+    }
+
+    if (breed) {
+      url.searchParams.append('breed', breed);
     }
 
     const response = await fetch(url.toString(), {
@@ -53,4 +57,29 @@ async function getAnimals(type = 'dog', limit = 4, sort = 'random', good_with_ch
   return [];
 }
 
-module.exports = { getAnimals };
+async function getOrganizations() {
+  try {
+    let token = await getToken();
+    console.log('token: ' + token);
+
+    const response = await fetch(`https://api.petfinder.com/v2/organizations?limit=100`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token,
+      },
+    });
+
+    const result = await response.json();
+    const organizations = {};
+    result.organizations.forEach((org) => {
+      organizations[org.id] = org.name;
+    });
+    return organizations;
+  } catch (error) {
+    console.error('Error when trying to fetch organization: ', error);
+  }
+  return {};
+}
+
+module.exports = { getAnimals, getOrganizations };

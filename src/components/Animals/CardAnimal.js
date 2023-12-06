@@ -3,15 +3,21 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Col from 'react-bootstrap/Col';
 import noImg from '../../assets/images/no-photo-found.png';
 import { Link } from 'react-router-dom';
+import OrganizationsContext from '../../context/OrganizationsContext';
+import { useContext } from 'react';
 
 export default function CardAnimal(props) {
-  let { name, breed, age, photo, gender, description } = props;
+  const organizations = useContext(OrganizationsContext);
+  console.log('Organizations: ', organizations);
 
+  let { name, breed, age, photo, gender, description, organization_id } = props;
+  console.log('organization_id: ', organization_id);
+  console.log('organizations[organization_id]: ', organizations[organization_id]);
   if (description === null) {
     description = `Hi there! My name is ${name}, and I am a cute pet looking for a home! Please adopt me! :)`;
   }
 
-  if (photo === null) {
+  if (photo === undefined) {
     photo = { noImg };
   }
 
@@ -36,6 +42,9 @@ export default function CardAnimal(props) {
         <Card.Body>
           <Card.Link style={{ textDecoration: 'none', color: 'inherit' }}>
             <Link to={`/breedinfo/${breed}`}>Breed: {breed}</Link>
+          </Card.Link>
+          <Card.Link style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to={``}>Organization: {organizations[organization_id]}</Link>
           </Card.Link>
         </Card.Body>
       </Card>

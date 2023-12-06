@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../components/Header';
 import loginImg from '../assets/images/login-dog.jpg';
-import petfinder from '../utils/petfinder';
+import * as petfinder from '../utils/petfinder';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

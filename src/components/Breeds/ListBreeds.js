@@ -13,12 +13,14 @@ export default function ListBreeds() {
     }
     getAllBreeds();
   }, []);
-
   return (
     <Col>
-      {breeds.map((breed) => (
-        <p>{breed}</p>
-      ))}
+      {Array.isArray(breeds) &&
+        breeds.map((breed, idx) => (
+          <div key={idx}>
+            <p>{breed}</p>
+          </div>
+        ))}
     </Col>
   );
 }

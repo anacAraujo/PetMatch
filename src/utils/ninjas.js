@@ -12,6 +12,7 @@ async function getInfoBreed(type, breed) {
   } catch (error) {
     console.error('Error when trying to fetch breeds: ', error);
   }
+  return [];
 }
 
 module.exports = { getInfoBreed };

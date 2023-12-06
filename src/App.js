@@ -19,7 +19,7 @@ function App() {
             <Route path="/login" element={<Login></Login>}></Route>
             <Route path="/signup" element={<SignUp></SignUp>}></Route>
             <Route path="/profile" element={<Profile></Profile>}></Route>
-            <Route path="/breedinfo" element={<BreedInfo></BreedInfo>}></Route>
+            <Route path="/breedinfo/:breed" element={<BreedInfo></BreedInfo>}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

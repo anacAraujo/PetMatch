@@ -35,7 +35,7 @@ export default function CardAnimal(props) {
         </ListGroup>
         <Card.Body>
           <Card.Link style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Link to="/breedinfo">Breed: {breed}</Link>
+            <Link to={`/breedinfo/${breed}`}>Breed: {breed}</Link>
           </Card.Link>
         </Card.Body>
       </Card>

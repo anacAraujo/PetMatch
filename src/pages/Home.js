@@ -20,6 +20,7 @@ export default function Home() {
         <Mission></Mission>
         <h3 className="mb-5">Some of our pets available</h3>
         <ListAnimals></ListAnimals>
+        <ListAnimals type={'cat'}></ListAnimals>
         <Button variant="primary" className="m-5 px-5 py-3" href="/login">
           See More
         </Button>

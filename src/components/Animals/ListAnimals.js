@@ -6,17 +6,24 @@ import Row from 'react-bootstrap/Row';
 export default function ListAnimals(props) {
   const [animals, setAnimals] = useState([]);
 
-  let { breed } = props;
+  let { type, breed } = props;
+  console.log('Breed!!!!!!: ', breed);
 
   useEffect(() => {
     async function getAnimals() {
-      const result = await petfinder.getAnimals(breed);
+      const filters = {
+        type: type,
+        breed: breed,
+      };
+
+      const result = await petfinder.getAnimals(filters);
       setAnimals(result);
+
       console.log('Animals: ', result);
     }
 
     getAnimals();
-  }, []);
+  }, [breed]);
 
   return (
     <Row>
@@ -26,7 +33,7 @@ export default function ListAnimals(props) {
           name={animal.name}
           breed={animal.breeds.primary}
           age={animal.age}
-          photo={animal.photos[0].medium}
+          photo={animal?.photos[0]}
           gender={animal.gender}
           description={animal.description}
           organization_id={animal.organization_id}

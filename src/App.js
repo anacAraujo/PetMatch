@@ -12,7 +12,6 @@ import { useState, useEffect } from 'react';
 
 import OrganizationsContext from './context/OrganizationsContext';
 import * as petfinder from './utils/petfinder';
-export const UserContext = React.createContext();
 
 function App() {
   const [organizations, setOrganizations] = useState({});

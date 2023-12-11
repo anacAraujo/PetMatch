@@ -5,6 +5,7 @@ import Profile from './pages/Profile';
 import SignUp from './pages/SignUp';
 import BreedInfo from './pages/BreedInfo';
 import Header from './components/Header';
+import About from './pages/About';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import { useState, useEffect } from 'react';
@@ -35,6 +36,7 @@ function App() {
               <Route path="/signup" element={<SignUp></SignUp>}></Route>
               <Route path="/profile" element={<Profile></Profile>}></Route>
               <Route path="/breedinfo/:breed" element={<BreedInfo></BreedInfo>}></Route>
+              <Route path="/about" element={<About></About>}></Route>
             </Route>
           </Routes>
         </BrowserRouter>

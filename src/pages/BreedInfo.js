@@ -5,11 +5,7 @@ import InfoBreed from '../components/Breeds/InfoBreed';
 import ListBreeds from '../components/Breeds/ListBreeds';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-
-import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Col from 'react-bootstrap/Col';
+import ListAnimals from '../components/Animals/ListAnimals';
 
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -40,7 +36,12 @@ export default function BreedInfo() {
         </Offcanvas>
 
         <Row>
-          <InfoBreed></InfoBreed>
+          <InfoBreed breed={breed}></InfoBreed>
+        </Row>
+
+        <Row>
+          <h3 className="m-3">Some {breed}s available</h3>
+          <ListAnimals breed={breed}></ListAnimals>
         </Row>
       </Container>
     </>

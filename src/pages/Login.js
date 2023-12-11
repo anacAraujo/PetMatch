@@ -33,10 +33,6 @@ export default function Login() {
       setNotice('You entered a wrong username or password.');
     }
   };
-  const test = async (e) => {
-    let a = await petfinder.getAnimals();
-    console.log('Animals: ', a);
-  };
 
   return (
     <Container>
@@ -75,13 +71,7 @@ export default function Login() {
                 id="default-checkbox"
                 label="Remember Me" //TODO
               />
-              <Link
-                onClick={() => {
-                  test();
-                }}
-              >
-                Forget Password?
-              </Link>
+              <Link>Forget Password?</Link>
               {/* TODO: Add password reset functionality */}
             </div>
             <div className="d-grid gap-2">

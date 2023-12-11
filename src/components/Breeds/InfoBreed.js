@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import ninjas from '../../utils/ninjas';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import ListAnimals from '../Animals/ListAnimals';
 
-export default function InfoBreed() {
-  const { breed } = useParams();
+export default function InfoBreed(props) {
+  const breed = props.breed;
   console.log('Breed: ', breed);
 
   const [infoBreed, setInfoBreed] = useState([]);
@@ -46,8 +44,6 @@ export default function InfoBreed() {
           </Col>
         </Row>
       ))}
-      <h3 className="m-3">Some {breed}s available</h3>
-      <ListAnimals breed={breed}></ListAnimals>
     </Col>
   );
 }

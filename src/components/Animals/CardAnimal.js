@@ -11,14 +11,19 @@ export default function CardAnimal(props) {
   console.log('Organizations: ', organizations);
 
   let { name, breed, age, photo, gender, description, organization_id } = props;
-  console.log('organization_id: ', organization_id);
-  console.log('organizations[organization_id]: ', organizations[organization_id]);
-  if (description === null) {
+
+  if (!description) {
     description = `Hi there! My name is ${name}, and I am a cute pet looking for a home! Please adopt me! :)`;
   }
 
-  if (photo === undefined) {
+  if (photo) {
+    //TODO
+    //photo = { noImg };
+    photo = photo.medium;
+    //console.log('No photo found. Using ', noImg);
+  } else {
     photo = { noImg };
+    console.log('No photo found. Using ', noImg);
   }
 
   return (
@@ -36,15 +41,18 @@ export default function CardAnimal(props) {
           <Card.Text>{description}</Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroup.Item>Age: {age}</ListGroup.Item>
-          <ListGroup.Item>Gender: {gender}</ListGroup.Item>
+          <ListGroup.Item>
+            Age: {age} | Gender: {gender}
+          </ListGroup.Item>
         </ListGroup>
         <Card.Body>
           <Card.Link style={{ textDecoration: 'none', color: 'inherit' }}>
             <Link to={`/breedinfo/${breed}`}>Breed: {breed}</Link>
           </Card.Link>
+        </Card.Body>
+        <Card.Body>
           <Card.Link style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Link to={``}>Organization: {organizations[organization_id]}</Link>
+            <Link to={`/organization/${organization_id}`}>See Organization</Link>
           </Card.Link>
         </Card.Body>
       </Card>

@@ -23,7 +23,7 @@ async function getToken() {
   return token;
 }
 
-async function getAnimals(type = 'dog', breed, limit = 4, sort = 'random', good_with_children) {
+async function getAnimals(breed, type = 'dog', limit = 4, sort = 'random', good_with_children) {
   try {
     let token = await getToken();
     console.log('token: ' + token);
@@ -71,7 +71,7 @@ async function getOrganizations() {
     });
 
     const result = await response.json();
-    const organizations = {};
+    const organizations = [];
     result.organizations.forEach((org) => {
       organizations[org.id] = org.name;
     });
@@ -79,7 +79,28 @@ async function getOrganizations() {
   } catch (error) {
     console.error('Error when trying to fetch organization: ', error);
   }
-  return {};
+  return [];
 }
 
-module.exports = { getAnimals, getOrganizations };
+async function getBreeds(type = 'dog') {
+  try {
+    let token = await getToken();
+    console.log('token: ' + token);
+
+    const response = await fetch(`https://api.petfinder.com/v2/types/${type}/breeds`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token,
+      },
+    });
+
+    const result = await response.json();
+    return Object.values(result.breeds);
+  } catch (error) {
+    console.error('Error when trying to fetch organization: ', error);
+  }
+  return [];
+}
+
+module.exports = { getAnimals, getOrganizations, getBreeds };

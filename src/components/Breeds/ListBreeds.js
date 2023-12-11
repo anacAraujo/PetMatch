@@ -1,24 +1,30 @@
 import Col from 'react-bootstrap/Col';
-import dogceo from '../../utils/dogceo';
+import petfinder from '../../utils/petfinder';
 import { useState, useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ListBreeds() {
   const [breeds, setBreeds] = useState([]);
 
   useEffect(() => {
     async function getAllBreeds() {
-      const result = await dogceo.getAllBreeds();
-      setBreeds(result);
-      console.log('Breeds: ', result);
+      const result = await petfinder.getBreeds();
+      let breedsNames = [];
+      for (const breed of result) {
+        breedsNames.push(breed.name);
+      }
+      setBreeds(breedsNames);
+      console.log('Breeds: ', breeds);
     }
     getAllBreeds();
   }, []);
   return (
-    <Col>
+    <Col xs={4}>
       {Array.isArray(breeds) &&
         breeds.map((breed, idx) => (
-          <div key={idx}>
-            <p>{breed}</p>
+          <div className="text-right" key={idx}>
+            <Link to={`/breedinfo/${breed}`}>{breed}</Link>
           </div>
         ))}
     </Col>

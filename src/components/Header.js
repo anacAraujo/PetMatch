@@ -9,6 +9,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 export const UserContext = React.createContext();
 
 export default function Header() {
+  //TODO: Separar para a pasta de contextos
   const [isLog, setLog] = useState(false);
   const updateIsLog = (dadosfilho) => {
     setLog(dadosfilho);

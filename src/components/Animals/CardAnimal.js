@@ -25,7 +25,7 @@ export default function CardAnimal(props) {
 
   return (
     <Col>
-      <Card style={{ width: '18rem' }} className="mx-2">
+      <Card style={{ width: '18rem' }}>
         <Card.Img
           xs={6}
           md={4}

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import ListAnimals from '../components/Animals/ListAnimals';
 import Mission from '../components/Mission';
 import Footer from '../components/Footer';
+import { auth } from '../utils/firebase';
 
 import '../assets/styles/pages/Home.scss';
 
@@ -21,9 +22,15 @@ export default function Home() {
         <h3 className="mb-5">Some of our pets available</h3>
         <ListAnimals></ListAnimals>
         <ListAnimals type={'cat'}></ListAnimals>
-        <Button variant="primary" className="m-5 px-5 py-3" href="/login">
-          See More
-        </Button>
+        {auth.currentUser ? (
+          <Button variant="primary" className="m-5 px-5 py-3" href="/profile">
+            See My Matches
+          </Button>
+        ) : (
+          <Button variant="primary" className="m-5 px-5 py-3" href="/login">
+            See More
+          </Button>
+        )}
       </Container>
       <Footer></Footer>
     </div>

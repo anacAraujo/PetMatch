@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import '../assets/styles/pages/Login.scss';
-import { auth } from '../utils/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth, googleProvider } from '../utils/firebase';
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../components/Header';
 import loginImg from '../assets/images/login-dog.jpg';
-import * as petfinder from '../utils/petfinder';
+import { FcGoogle } from 'react-icons/fc';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { FaFacebookSquare } from 'react-icons/fa';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -31,6 +30,15 @@ export default function Login() {
       navigate('/quiz');
     } catch {
       setNotice('You entered a wrong username or password.');
+    }
+  };
+
+  const signUpWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      navigate('/');
+    } catch {
+      setNotice('Sorry, something went wrong. Please try again.');
     }
   };
 
@@ -64,7 +72,7 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center justify-content-between mt-3">
               <Form.Check
                 className="mb-3 "
                 type="checkbox"
@@ -74,22 +82,21 @@ export default function Login() {
               <Link>Forget Password?</Link>
               {/* TODO: Add password reset functionality */}
             </div>
-            <div className="d-grid gap-2">
-              <Button variant="dark" onClick={(e) => loginWithUsernameAndPassword(e)}>
+            <div className="d-grid gap-2 my-3">
+              <Button variant="primary" onClick={(e) => loginWithUsernameAndPassword(e)}>
                 Login
               </Button>
             </div>
-            <div className="sideline">OR</div>
-            <div className="d-grid gap-2">
-              <Button variant="primary">
-                <FaFacebookSquare className="mx-2" />
-                Login With Facebook
+            <div className="sideline my-3">OR</div>
+            <div className="d-grid gap-2 my-3">
+              <Button variant="dark" onClick={signUpWithGoogle}>
+                <FcGoogle className="mx-2" />
+                Login with Google
               </Button>
-              {/* TODO: Add Facebook or Google login functionality */}
             </div>
             <div className="pt-4 text-center">
               Need to sign up for an account?
-              <Link to="/signup">Click here.</Link>
+              <Link to="/signup">Click here. </Link>
             </div>
           </Form>
         </Col>

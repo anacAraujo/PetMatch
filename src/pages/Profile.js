@@ -55,7 +55,9 @@ export default function Profile() {
             </Button>
           </Col>
         )}
+
         {selectedTab === 'My Preferences' && <Row>/* My Preferences content */</Row>}
+
         {selectedTab === 'My Matches' && (
           <Row>
             <ListAnimals
@@ -66,6 +68,8 @@ export default function Profile() {
               good_with_children={good_with_children}
               good_with_dogs={good_with_dogs}
               good_with_cats={good_with_cats}
+              limit={3}
+              sort={'-recent'}
             ></ListAnimals>
           </Row>
         )}

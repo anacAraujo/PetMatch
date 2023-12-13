@@ -28,7 +28,7 @@ export default function Login() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       value.func(true);
-      navigate('/');
+      navigate('/quiz');
     } catch {
       setNotice('You entered a wrong username or password.');
     }

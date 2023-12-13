@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { auth } from '../utils/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { Container, Row, Col, Image, Form, Button } from 'react-bootstrap';
+import signUpImg from '../assets/images/quizz.jpg';
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -28,70 +30,52 @@ export default function SignUp() {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <form className="col-md-4 mt-3 pt-3 pb-3">
-          {'' !== notice && (
-            <div className="alert alert-warning" role="alert">
-              {notice}
+    <Container className="mt-5">
+      <Row className="justify-content-center">
+        {'' !== notice && (
+          <div className="alert alert-warning" role="alert">
+            {notice}
+          </div>
+        )}
+        <Col>
+          <Form className="mx-5 mt-3 pt-3 pb-3">
+            <div className="form-style mb-3">
+              <Form.Control
+                className="mb-2"
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Form.Control
+                className="mb-2"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Form.Control
+                className="mb-2"
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
             </div>
-          )}
-          <div className="form-floating mb-3">
-            <input
-              id="signupEmail"
-              type="email"
-              className="form-control"
-              aria-describedby="emailHelp"
-              placeholder="name@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></input>
-            <label htmlFor="signupEmail" className="form-label">
-              Enter an email address for your username
-            </label>
-          </div>
-          <div className="form-floating mb-3">
-            <input
-              id="signupPassword"
-              type="password"
-              className="form-control"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            ></input>
-            <label htmlFor="signupPassword" className="form-label">
-              Password
-            </label>
-          </div>
-          <div className="form-floating mb-3">
-            <input
-              id="confirmPassword"
-              type="password"
-              className="form-control"
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            ></input>
-            <label htmlFor="confirmPassword" className="form-label">
-              Confirm Password
-            </label>
-          </div>
-          <div className="d-grid">
-            <button
-              type="submit"
-              className="btn btn-primary pt-3 pb-3"
-              onClick={(e) => signupWithUsernameAndPassword(e)}
-            >
-              Sign Up
-            </button>
-          </div>
-          <div className="mt-3 text-center">
-            <span>
-              Go back to login? <Link to="/login">Click here.</Link>
-            </span>
-          </div>
-        </form>
-      </div>
-    </div>
+            <div className="d-grid gap-2">
+              <Button onClick={(e) => signupWithUsernameAndPassword(e)}>Sign Up</Button>
+            </div>
+            <div className="mt-3 text-center">
+              <span>
+                Go back to login? <Link to="/login">Click here.</Link>
+              </span>
+            </div>
+          </Form>
+        </Col>
+        <Col>
+          <Image src={signUpImg} className="img-fluid"></Image>
+        </Col>
+      </Row>
+    </Container>
   );
 }

@@ -4,7 +4,6 @@ import { IoPersonCircleSharp } from 'react-icons/io5';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { auth } from '../utils/firebase';
 
 export default function Header() {
@@ -16,11 +15,17 @@ export default function Header() {
             <Link className="navbar-brand" to="/">
               PET MATCH
             </Link>
-            <div className="collapse navbar-collapse" id="navbarText">
+
+            <Navbar.Collapse id="responsive-navbar-nav">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/profile">
-                    profile
+                  <Link className="nav-link" to="/breedinfo/Affenpinscher">
+                    Breeds
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about">
+                    About
                   </Link>
                 </li>
               </ul>
@@ -31,7 +36,7 @@ export default function Header() {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </Navbar.Collapse>
           </div>
         </nav>
         <Outlet />
@@ -59,20 +64,7 @@ export default function Header() {
                       About
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/quiz">
-                      Quiz
-                    </Link>
-                  </li>
                 </ul>
-
-                <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                </NavDropdown>
               </Nav>
 
               <Nav>

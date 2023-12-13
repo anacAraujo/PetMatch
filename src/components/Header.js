@@ -69,6 +69,11 @@ export default function Header() {
                         About
                       </Link>
                     </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/quiz">
+                        Quiz
+                      </Link>
+                    </li>
                   </ul>
 
                   <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,20 +8,50 @@ import { Image } from 'react-bootstrap';
 import image from '../assets/images/quiz.jpg';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { petfinder } from '../utils/petfinder';
 
 export default function Quiz() {
-  const [notice, setNotice] = useState('');
   const navigate = useNavigate();
+
+  const [type, setType] = useState('');
+  const [age, setAge] = useState('');
+  const [size, setSize] = useState('');
+  const [gender, setGender] = useState('');
+  const [good_with_children, setGood_with_children] = useState(false);
+  const [good_with_dogs, setGood_with_dogs] = useState(false);
+  const [good_with_cats, setGood_with_cats] = useState(false);
 
   const setPreferences = async (e) => {
     e.preventDefault();
+    navigate(`/profile/${type}/${age}/${size}/${gender}/${good_with_children}/${good_with_dogs}/${good_with_cats} `);
+  };
 
-    try {
-      // await signInWithEmailAndPassword(auth, email, password);
-      navigate('/');
-    } catch {
-      setNotice('Anser all the questions.');
-    }
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
+  };
+
+  const handleAgeChange = (e) => {
+    setAge(e.target.value);
+  };
+
+  const handleSizeChange = (e) => {
+    setSize(e.target.value);
+  };
+
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
+  };
+
+  const handleGood_with_childrenChange = (e) => {
+    setGood_with_children(e.target.value);
+  };
+
+  const handleGood_with_dogsChange = (e) => {
+    setGood_with_dogs(e.target.value);
+  };
+
+  const handleGood_with_catsChange = (e) => {
+    setGood_with_cats(e.target.value);
   };
 
   return (
@@ -30,11 +59,6 @@ export default function Quiz() {
       <Row className="m-5 no-gutters shadow-lg">
         <h3 className="pb-3 mt-4">Let's find your perfect match</h3>
         <p>Tell us about your lifestyle and preferences</p>
-        {'' !== notice && (
-          <div className="alert alert-warning" role="alert">
-            {notice}
-          </div>
-        )}
         <Col className="mt-5">
           <Image src={image} className="img-fluid" style={{ width: '100%', height: 'auto' }} />
         </Col>
@@ -43,7 +67,7 @@ export default function Quiz() {
             <div className="form-style mb-3">
               <Form.Group as={Col} id="type" className="d-flex flex-column align-items-start m-3">
                 <Form.Label>I am looking for a:</Form.Label>
-                <Form.Select defaultValue="Select an animal" className="text-align-right">
+                <Form.Select defaultValue="cat" onChange={handleTypeChange} className="text-align-right">
                   <option value="cat">Cat</option>
                   <option value="dog">Dog</option>
                 </Form.Select>
@@ -51,7 +75,7 @@ export default function Quiz() {
 
               <Form.Group as={Col} id="age" className="d-flex flex-column align-items-start mt-4 mx-3">
                 <Form.Label> That is:</Form.Label>
-                <Form.Select defaultValue="Select an animal">
+                <Form.Select defaultValue="baby" onChange={handleAgeChange}>
                   <option value="baby">Baby</option>
                   <option value="young">Young</option>
                   <option value="adult">Adult</option>
@@ -60,7 +84,7 @@ export default function Quiz() {
               </Form.Group>
 
               <Form.Group as={Col} id="size" className="d-flex flex-column align-items-start mt-4 mx-3">
-                <Form.Select defaultValue="Select an animal">
+                <Form.Select defaultValue="small" onChange={handleSizeChange}>
                   <option value="small">Small</option>
                   <option value="medium">Medium</option>
                   <option value="large">Large</option>
@@ -69,7 +93,7 @@ export default function Quiz() {
               </Form.Group>
 
               <Form.Group as={Col} id="gender" className="d-flex flex-column align-items-start mt-4 mx-3">
-                <Form.Select defaultValue="Select an animal">
+                <Form.Select defaultValue="male" onChange={handleGenderChange}>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                 </Form.Select>
@@ -78,13 +102,28 @@ export default function Quiz() {
               <Form.Label className="d-flex flex-column align-items-start mt-4 mx-3"> I nedd it to be: </Form.Label>
               <div className="d-flex align-items-center justify-content-between">
                 <Form.Group className="mb-3" id="good_with_children">
-                  <Form.Check type="checkbox" label="Good with children" />
+                  <Form.Check
+                    type="checkbox"
+                    label="Good with children"
+                    checked={good_with_children}
+                    onChange={(e) => setGood_with_children(e.target.checked)}
+                  />
                 </Form.Group>
                 <Form.Group className="mb-3" id="good_with_dogs">
-                  <Form.Check type="checkbox" label="Good with dogs" />
+                  <Form.Check
+                    type="checkbox"
+                    label="Good with dogs"
+                    checked={good_with_dogs}
+                    onChange={(e) => setGood_with_dogs(e.target.checked)}
+                  />
                 </Form.Group>
                 <Form.Group className="mb-3" id="good_with_cats">
-                  <Form.Check type="checkbox" label="Good with cats" />
+                  <Form.Check
+                    type="checkbox"
+                    label="Good with cats"
+                    checked={good_with_cats}
+                    onChange={(e) => setGood_with_cats(e.target.checked)}
+                  />
                 </Form.Group>
               </div>
 

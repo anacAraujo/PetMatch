@@ -26,15 +26,21 @@ async function getToken() {
 //breed, type = 'dog', limit = 4, sort = 'random', good_with_children
 async function getAnimals(filters) {
   try {
-    const { type, limit, sort, breed, good_with_children } = filters;
+    const { type, age, size, gender, sort, breed, good_with_children, good_with_dogs, good_with_cats, limit } = filters;
 
     let token = await getToken();
     console.log('token: ' + token);
 
     const url = new URL('https://api.petfinder.com/v2/animals');
     url.searchParams.append('type', type || 'dog');
-    url.searchParams.append('limit', limit || 4);
+    url.searchParams.append('age', age || 'baby,young,adult,senior');
+    url.searchParams.append('size', size || 'small, medium, large, xlarge');
+    url.searchParams.append('gender', gender || 'male,female');
     url.searchParams.append('sort', sort || 'random');
+    url.searchParams.append('good_with_children', good_with_children || false);
+    url.searchParams.append('good_with_dogs', good_with_dogs || false);
+    url.searchParams.append('good_with_cats', good_with_cats || false);
+    url.searchParams.append('limit', limit || 4);
 
     if (breed) {
       url.searchParams.append('breed', breed);

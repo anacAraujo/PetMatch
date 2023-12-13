@@ -34,7 +34,10 @@ function App() {
               <Route index element={<HomePage></HomePage>}></Route>
               <Route path="/login" element={<Login></Login>}></Route>
               <Route path="/signup" element={<SignUp></SignUp>}></Route>
-              <Route path="/profile" element={<Profile></Profile>}></Route>
+              <Route
+                path="/profile/:type/:age/:size/:gender/:good_with_children/:good_with_dogs/:good_with_cats"
+                element={<Profile></Profile>}
+              ></Route>
               <Route path="/breedinfo/:breed" element={<BreedInfo></BreedInfo>}></Route>
               <Route path="/about" element={<About></About>}></Route>
               <Route path="/quiz" element={<Quiz></Quiz>}></Route>

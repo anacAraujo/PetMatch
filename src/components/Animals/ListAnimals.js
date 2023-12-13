@@ -33,7 +33,7 @@ export default function ListAnimals(props) {
           name={animal.name}
           breed={animal.breeds.primary}
           age={animal.age}
-          photo={animal?.photos[0]}
+          photo={animal.photos[0]}
           gender={animal.gender}
           description={animal.description}
           organization_id={animal.organization_id}

@@ -17,12 +17,9 @@ export default function CardAnimal(props) {
   }
 
   if (photo) {
-    //TODO
-    //photo = { noImg };
     photo = photo.medium;
-    //console.log('No photo found. Using ', noImg);
   } else {
-    photo = { noImg };
+    photo = noImg;
     console.log('No photo found. Using ', noImg);
   }
 

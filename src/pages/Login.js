@@ -33,7 +33,7 @@ export default function Login() {
   const signUpWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      navigate('/');
+      navigate('/quiz');
     } catch {
       setNotice('Sorry, something went wrong. Please try again.');
     }

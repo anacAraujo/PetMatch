@@ -23,7 +23,6 @@ async function getToken() {
   return token;
 }
 
-//breed, type = 'dog', limit = 4, sort = 'random', good_with_children
 async function getAnimals(filters) {
   try {
     const { type, age, size, gender, sort, breed, good_with_children, good_with_dogs, good_with_cats, limit } = filters;

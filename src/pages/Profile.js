@@ -56,7 +56,20 @@ export default function Profile() {
           </Col>
         )}
 
-        {selectedTab === 'My Preferences' && <Row>/* My Preferences content */</Row>}
+        {selectedTab === 'My Preferences' && (
+          <Row>
+            <p>I am looking for a {type}! </p>
+            <p>
+              I would rather it was an {age} pet, that is {size} and a {gender}.
+            </p>
+            <p>
+              It has to be {good_with_children ? 'good with children, ' : ''} {good_with_dogs ? 'good with dogs, ' : ''}{' '}
+              {good_with_cats ? 'good with cats' : ''}
+            </p>
+
+            <Button href="/quiz">Retake Quiz</Button>
+          </Row>
+        )}
 
         {selectedTab === 'My Matches' && (
           <Row>

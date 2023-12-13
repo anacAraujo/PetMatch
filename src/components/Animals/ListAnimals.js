@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 export default function ListAnimals(props) {
   const [animals, setAnimals] = useState([]);
 
-  let { type, breed } = props;
+  let { type, breed, age, size, gender, good_with_children, good_with_dogs, good_with_cats } = props;
   console.log('Breed!!!!!!: ', breed);
 
   useEffect(() => {
@@ -14,6 +14,12 @@ export default function ListAnimals(props) {
       const filters = {
         type: type,
         breed: breed,
+        age: age,
+        size: size,
+        gender: gender,
+        good_with_children: good_with_children,
+        good_with_dogs: good_with_dogs,
+        good_with_cats: good_with_cats,
       };
 
       const result = await petfinder.getAnimals(filters);

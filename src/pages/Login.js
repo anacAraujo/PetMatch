@@ -3,7 +3,6 @@ import '../assets/styles/pages/Login.scss';
 import { auth, googleProvider } from '../utils/firebase';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserContext } from '../components/Header';
 import loginImg from '../assets/images/login-dog.jpg';
 import { FcGoogle } from 'react-icons/fc';
 
@@ -19,14 +18,12 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [notice, setNotice] = useState('');
 
-  const value = React.useContext(UserContext);
-
   const loginWithUsernameAndPassword = async (e) => {
     e.preventDefault();
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      value.func(true);
+
       navigate('/quiz');
     } catch {
       setNotice('You entered a wrong username or password.');

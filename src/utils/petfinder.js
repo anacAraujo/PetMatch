@@ -33,7 +33,7 @@ async function getAnimals(filters) {
     url.searchParams.append('age', age || 'baby,young,adult,senior');
     url.searchParams.append('size', size || 'small, medium, large, xlarge');
     url.searchParams.append('gender', gender || 'male,female');
-    url.searchParams.append('sort', sort || 'random');
+    url.searchParams.append('sort', sort || '-recent');
     url.searchParams.append('good_with_children', good_with_children || false);
     url.searchParams.append('good_with_dogs', good_with_dogs || false);
     url.searchParams.append('good_with_cats', good_with_cats || false);

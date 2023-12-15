@@ -3,6 +3,7 @@ import '../assets/styles/pages/About.scss';
 import Footer from '../components/Footer';
 import cat from '../assets/images/about-cat.jpg';
 import dog from '../assets/images/about-dog.jpg';
+import { auth } from '../utils/firebase';
 
 export default function About() {
   return (
@@ -56,16 +57,33 @@ export default function About() {
 
         <Row className="m-5 join">
           <Col className="mt-5">
-            <h2 className="my-3">Join PetMatch Today</h2>
-            <p>
-              Embark on a life-changing adventure with PetMatch and discover the joy of unconditional love, unwavering
-              companionship, and the extraordinary bond that only a pet can bring into your life. We're not just
-              matching people to pets; we're creating lifelong connections that warm hearts and create tails that wag
-              with happiness.
-            </p>
-            <Button className="my-3 px-5 py-3" variant="dark" href="/login">
-              Login
-            </Button>
+            {auth.currentUser ? (
+              <>
+                <h2 className="my-3">Adopt Today</h2>
+                <p>
+                  Embark on a life-changing adventure with PetMatch and discover the joy of unconditional love,
+                  unwavering companionship, and the extraordinary bond that only a pet can bring into your life. We're
+                  not just matching people to pets; we're creating lifelong connections that warm hearts and create
+                  tails that wag with happiness.
+                </p>
+                <Button className="my-3 px-5 py-3" variant="dark" href="/profile">
+                  Profile
+                </Button>
+              </>
+            ) : (
+              <>
+                <h2 className="my-3">Join PetMatch Today</h2>
+                <p>
+                  Embark on a life-changing adventure with PetMatch and discover the joy of unconditional love,
+                  unwavering companionship, and the extraordinary bond that only a pet can bring into your life. We're
+                  not just matching people to pets; we're creating lifelong connections that warm hearts and create
+                  tails that wag with happiness.
+                </p>
+                <Button className="my-3 px-5 py-3" variant="dark" href="/login">
+                  Login
+                </Button>
+              </>
+            )}
           </Col>
           <Col className="my-5">
             <Image src={dog} rounded style={{ width: '90%', height: 'auto' }}></Image>

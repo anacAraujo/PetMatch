@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/Footer';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import InfoBreed from '../components/Breeds/InfoBreed';
@@ -11,7 +12,7 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 export default function BreedInfo() {
-  const { breed } = useParams();
+  const { type, breed } = useParams();
 
   const [show, setShow] = useState(false);
 
@@ -20,8 +21,8 @@ export default function BreedInfo() {
 
   return (
     <>
-      <div style={{ textAlign: 'left' }}>
-        <Button variant="primary" className="m-2" onClick={handleShow}>
+      <div className="mt-5" style={{ textAlign: 'left' }}>
+        <Button variant="primary" className="m-5" onClick={handleShow}>
           Choose Breed
         </Button>
       </div>
@@ -31,19 +32,20 @@ export default function BreedInfo() {
             <Offcanvas.Title>Breeds</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <ListBreeds></ListBreeds>
+            <ListBreeds type={type}></ListBreeds>
           </Offcanvas.Body>
         </Offcanvas>
 
         <Row>
-          <InfoBreed breed={breed}></InfoBreed>
+          <InfoBreed type={type} breed={breed}></InfoBreed>
         </Row>
 
         <Row>
           <h3 className="m-3">Some {breed}s available</h3>
-          <ListAnimals breed={breed}></ListAnimals>
+          <ListAnimals type={type} breed={breed}></ListAnimals>
         </Row>
       </Container>
+      <Footer></Footer>
     </>
   );
 }

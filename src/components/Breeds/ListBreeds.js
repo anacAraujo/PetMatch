@@ -4,18 +4,19 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ListBreeds() {
+export default function ListBreeds(props) {
   const [breeds, setBreeds] = useState([]);
+
+  const { type } = props;
 
   useEffect(() => {
     async function getAllBreeds() {
-      const result = await petfinder.getBreeds();
+      const result = await petfinder.getBreeds(type);
       let breedsNames = [];
       for (const breed of result) {
         breedsNames.push(breed.name);
       }
       setBreeds(breedsNames);
-      console.log('Breeds: ', breeds);
     }
     getAllBreeds();
   }, []);
@@ -24,7 +25,7 @@ export default function ListBreeds() {
       {Array.isArray(breeds) &&
         breeds.map((breed, idx) => (
           <div className="text-right" key={idx}>
-            <Link to={`/breedinfo/${breed}`}>{breed}</Link>
+            <Link to={`/breedinfo/${type}/${breed}`}>{breed}</Link>
           </div>
         ))}
     </Col>

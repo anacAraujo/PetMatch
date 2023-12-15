@@ -6,9 +6,9 @@ import dog from '../assets/images/exemple-dog.jpg';
 
 export default function Mission() {
   return (
-    <Row className="my-5">
+    <Row>
       <Col xs={8} md={6} className="my-5">
-        <Image src={dog} rounded style={{ width: '100%', height: 'auto' }}></Image>
+        <Image src={dog} rounded className="mt-5" style={{ width: '100%', height: 'auto' }}></Image>
       </Col>
       <Col className="my-5 mx-5 p-5 text-right">
         <p>About</p>

@@ -13,7 +13,6 @@ async function getToken() {
       },
     });
     const tokenData = await response.json();
-    console.log(tokenData);
 
     token = tokenData.access_token;
   } catch (error) {
@@ -28,7 +27,6 @@ async function getAnimals(filters) {
     const { type, age, size, gender, sort, breed, good_with_children, good_with_dogs, good_with_cats, limit } = filters;
 
     let token = await getToken();
-    console.log('token: ' + token);
 
     const url = new URL('https://api.petfinder.com/v2/animals');
     url.searchParams.append('type', type || 'dog');
@@ -68,7 +66,6 @@ async function getAnimals(filters) {
 async function getOrganizations() {
   try {
     let token = await getToken();
-    console.log('token: ' + token);
 
     const response = await fetch(`https://api.petfinder.com/v2/organizations?limit=100`, {
       method: 'GET',
@@ -93,7 +90,6 @@ async function getOrganizations() {
 async function getBreeds(type = 'dog') {
   try {
     let token = await getToken();
-    console.log('token: ' + token);
 
     const response = await fetch(`https://api.petfinder.com/v2/types/${type}/breeds`, {
       method: 'GET',

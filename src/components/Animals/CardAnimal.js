@@ -7,10 +7,7 @@ import OrganizationsContext from '../../context/OrganizationsContext';
 import { useContext } from 'react';
 
 export default function CardAnimal(props) {
-  const organizations = useContext(OrganizationsContext);
-  console.log('Organizations: ', organizations);
-
-  let { name, breed, age, photo, gender, description, organization_id } = props;
+  let { type, name, breed, age, photo, gender, description, organization_id } = props;
 
   if (!description) {
     description = `Hi there! My name is ${name}, and I am a cute pet looking for a home! Please adopt me! :)`;
@@ -20,7 +17,6 @@ export default function CardAnimal(props) {
     photo = photo.medium;
   } else {
     photo = noImg;
-    console.log('No photo found. Using ', noImg);
   }
 
   return (
@@ -44,7 +40,7 @@ export default function CardAnimal(props) {
         </ListGroup>
         <Card.Body>
           <Card.Link style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Link to={`/breedinfo/${breed}`}>Breed: {breed}</Link>
+            <Link to={`/breedinfo/${type}/${breed}`}>Breed: {breed}</Link>
           </Card.Link>
         </Card.Body>
         <Card.Body>

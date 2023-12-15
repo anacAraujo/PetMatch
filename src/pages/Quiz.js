@@ -74,7 +74,7 @@ export default function Quiz() {
           <h3 className="pb-3 mt-4">Let's find your perfect match</h3>
           <p>Tell us about your lifestyle and preferences</p>
           <Col className="mt-5">
-            <Image src={image} className="img-fluid" style={{ width: '100%', height: 'auto' }} />
+            <Image src={image} rounded className="img-fluid" style={{ width: '100%', height: 'auto' }} />
           </Col>
           <Col className="col-md-6 bg-white p-5">
             <Form className="primary">

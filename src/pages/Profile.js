@@ -2,11 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../utils/firebase';
 import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Nav, Container, Row, Col, Button } from 'react-bootstrap';
+import { Nav, Container, Row, Col, Button, Image } from 'react-bootstrap';
 import { useState } from 'react';
 import ListAnimals from '../components/Animals/ListAnimals';
 import Footer from '../components/Footer';
 import { UserContext } from '../context/UserContext';
+import cat from '../assets/images/profile-cat.jpg';
+import dog from '../assets/images/profile-dog.jpg';
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -64,17 +66,24 @@ export default function Profile() {
           )}
 
           {selectedTab === 'My Preferences' && (
-            <Row>
-              <p>I am looking for a {type}! </p>
-              <p>
-                I would rather it was an {age} pet, that is {size} and a {gender}.
-              </p>
-              <p>
-                It has to be {good_with_children ? 'good with children, ' : ''}{' '}
-                {good_with_dogs ? 'good with dogs, ' : ''} {good_with_cats ? 'good with cats' : ''}
-              </p>
+            <Row className="m-5">
+              <Col xs={7} md={5}>
+                {type === 'cat' ? <Image fluid rounded src={cat}></Image> : <Image fluid rounded src={dog}></Image>}
+              </Col>
+              <Col className="mt-5">
+                <p>I am looking for a {type}! </p>
+                <p>
+                  I would rather it was an {age} pet, that is {size} and a {gender}.
+                </p>
+                <p>
+                  It has to be {good_with_children ? 'good with children, ' : ''}{' '}
+                  {good_with_dogs ? 'good with dogs, ' : ''} {good_with_cats ? 'good with cats' : ''}
+                </p>
 
-              <Button href="/quiz">Retake Quiz</Button>
+                <Button className="px-5 py-3 m-5" href="/quiz">
+                  Retake Quiz
+                </Button>
+              </Col>
             </Row>
           )}
 

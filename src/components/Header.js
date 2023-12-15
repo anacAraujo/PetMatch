@@ -1,12 +1,15 @@
 import { Outlet, Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { IoPersonCircleSharp } from 'react-icons/io5';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import { auth } from '../utils/firebase';
 
 export default function Header() {
+  useEffect(() => {}, [auth]);
+
   if (auth.currentUser) {
     return (
       <div>
@@ -19,9 +22,10 @@ export default function Header() {
             <Navbar.Collapse id="responsive-navbar-nav">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/breedinfo/Affenpinscher">
-                    Breeds
-                  </Link>
+                  <NavDropdown title="Breeds" id="basic-nav-dropdown">
+                    <NavDropdown.Item href="/breedinfo/cat/American Shorthair">Cats</NavDropdown.Item>
+                    <NavDropdown.Item href="/breedinfo/dog/Affenpinscher">Dogs</NavDropdown.Item>
+                  </NavDropdown>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/about">
@@ -31,7 +35,7 @@ export default function Header() {
               </ul>
               <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/profile">
+                  <Link className="nav-link" to="/profile/">
                     <IoPersonCircleSharp size={30}></IoPersonCircleSharp>
                   </Link>
                 </li>
@@ -55,9 +59,10 @@ export default function Header() {
               <Nav className="me-auto">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <Link className="nav-link" to="/breedinfo/Affenpinscher">
-                      Breeds
-                    </Link>
+                    <NavDropdown title="Breeds" id="basic-nav-dropdown">
+                      <NavDropdown.Item href="/breedinfo/cat/American Shorthair">Cats</NavDropdown.Item>
+                      <NavDropdown.Item href="/breedinfo/dog/Affenpinscher">Dogs</NavDropdown.Item>
+                    </NavDropdown>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="/about">

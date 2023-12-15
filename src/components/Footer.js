@@ -7,6 +7,7 @@ export default function Footer() {
           {' '}
           PetMatch.com
         </a>
+        <p>Choose PetMatch – where lasting relationships between people and pets begin.</p>
       </div>
     </footer>
   );

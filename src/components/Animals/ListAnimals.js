@@ -68,6 +68,7 @@ export default function ListAnimals(props) {
           gender={animal.gender}
           description={animal.description}
           organization_id={animal.organization_id}
+          link={animal.url}
         ></CardAnimal>
       ))}
     </Row>

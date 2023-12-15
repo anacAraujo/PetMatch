@@ -13,10 +13,10 @@ import Footer from '../components/Footer';
 export default function Quiz() {
   const navigate = useNavigate();
 
-  const [type, setType] = useState('');
-  const [age, setAge] = useState('');
-  const [size, setSize] = useState('');
-  const [gender, setGender] = useState('');
+  const [type, setType] = useState('cat');
+  const [age, setAge] = useState('baby');
+  const [size, setSize] = useState('small');
+  const [gender, setGender] = useState('male');
   const [good_with_children, setGood_with_children] = useState(false);
   const [good_with_dogs, setGood_with_dogs] = useState(false);
   const [good_with_cats, setGood_with_cats] = useState(false);
@@ -81,7 +81,6 @@ export default function Quiz() {
               <div className="form-style mb-3">
                 <Form.Group as={Col} id="type" className="d-flex flex-column align-items-start m-3">
                   <Form.Label>I am looking for a:</Form.Label>
-                  //TODO: onchange
                   <Form.Select defaultValue="cat" onChange={handleTypeChange} className="text-align-right">
                     <option value="cat">Cat</option>
                     <option value="dog">Dog</option>

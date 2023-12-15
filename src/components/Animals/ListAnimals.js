@@ -7,7 +7,6 @@ export default function ListAnimals(props) {
   const [animals, setAnimals] = useState([]);
 
   let { type, breed, age, size, gender, good_with_children, good_with_dogs, good_with_cats, limit, sort } = props;
-  console.log('Breed!!!!!!: ', breed);
 
   useEffect(() => {
     async function getAnimals() {
@@ -26,8 +25,6 @@ export default function ListAnimals(props) {
 
       const result = await petfinder.getAnimals(filters);
       setAnimals(result);
-
-      console.log('Animals: ', result);
     }
 
     getAnimals();
@@ -38,6 +35,7 @@ export default function ListAnimals(props) {
       {animals.map((animal) => (
         <CardAnimal
           key={animal.id}
+          type={type}
           name={animal.name}
           breed={animal.breeds.primary}
           age={animal.age}

@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImg from '../assets/images/login-dog.jpg';
 import { FcGoogle } from 'react-icons/fc';
-
+import { UserContext } from '../context/UserContext';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -18,12 +18,14 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [notice, setNotice] = useState('');
 
+  const value = React.useContext(UserContext);
+
   const loginWithUsernameAndPassword = async (e) => {
     e.preventDefault();
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-
+      value.func(true);
       navigate('/quiz');
     } catch {
       setNotice('You entered a wrong username or password.');
@@ -33,6 +35,7 @@ export default function Login() {
   const signUpWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
+      value.func(true);
       navigate('/quiz');
     } catch {
       setNotice('Sorry, something went wrong. Please try again.');

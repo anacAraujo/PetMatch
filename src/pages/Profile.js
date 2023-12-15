@@ -6,10 +6,13 @@ import { Nav, Container, Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import ListAnimals from '../components/Animals/ListAnimals';
 import Footer from '../components/Footer';
+import { UserContext } from '../context/UserContext';
 
 export default function Profile() {
   const navigate = useNavigate();
   const user = auth.currentUser;
+
+  const value = React.useContext(UserContext);
 
   const { type, age, size, gender, good_with_children, good_with_dogs, good_with_cats } = JSON.parse(
     localStorage.getItem('quizResponse')
@@ -24,6 +27,7 @@ export default function Profile() {
     e.preventDefault();
 
     await signOut(auth);
+    value.func(false);
     navigate('/');
   };
 

@@ -19,6 +19,7 @@ export default function InfoBreed(props) {
     }
     getInfoBreed();
   }, [breed]);
+
   return (
     <Col>
       <h1>{breed}</h1>

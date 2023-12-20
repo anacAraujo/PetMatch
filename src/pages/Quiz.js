@@ -8,6 +8,8 @@ import { Image } from 'react-bootstrap';
 import image from '../assets/images/quiz.jpg';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { collection, addDoc } from 'firebase/firestore';
+import { db, auth } from '../utils/firebase';
 import Footer from '../components/Footer';
 
 export default function Quiz() {
@@ -21,6 +23,8 @@ export default function Quiz() {
   const [good_with_dogs, setGood_with_dogs] = useState(false);
   const [good_with_cats, setGood_with_cats] = useState(false);
 
+  const preferencesCollectionRef = collection(db, 'preferences');
+
   const setPreferences = async (e) => {
     e.preventDefault();
 
@@ -32,10 +36,16 @@ export default function Quiz() {
       good_with_children,
       good_with_dogs,
       good_with_cats,
+      id_user: auth.currentUser.uid,
     };
 
     localStorage.setItem('quizResponse', JSON.stringify(preferences));
 
+    try {
+      await addDoc(preferencesCollectionRef, preferences);
+    } catch (error) {
+      console.error(error);
+    }
     navigate(`/profile `);
   };
 

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../utils/firebase';
+import { auth, db } from '../utils/firebase';
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Nav, Container, Row, Col, Button, Image } from 'react-bootstrap';
 import { useState } from 'react';
 import ListAnimals from '../components/Animals/ListAnimals';
@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import { UserContext } from '../context/UserContext';
 import cat from '../assets/images/profile-cat.jpg';
 import dog from '../assets/images/profile-dog.jpg';
+import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore';
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -20,9 +21,37 @@ export default function Profile() {
     localStorage.getItem('quizResponse')
   );
 
+  const [idPreference, setIdPreferences] = useState('');
+  const preferencesCollectionRef = collection(db, 'preferences');
+
+  useEffect(() => {
+    const getPreferences = async () => {
+      console.log(user);
+      try {
+        const data = await getDocs(preferencesCollectionRef);
+        const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        const userPreferences = filteredData.filter((item) => item.id_user === user.uid);
+
+        console.log('userPreferences', userPreferences);
+
+        setIdPreferences(userPreferences[0].id);
+
+        console.log('idPreferences', idPreference);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getPreferences();
+  }, []);
+
   const [selectedTab, setSelectedTab] = useState('My Matches');
   const handleTabClick = (tabName) => {
     setSelectedTab(tabName);
+  };
+
+  const deletePreferences = async (id) => {
+    const preferencesDoc = doc(db, 'preferences', id);
+    await deleteDoc(preferencesDoc);
   };
 
   const logoutUser = async (e) => {
@@ -39,7 +68,7 @@ export default function Profile() {
         <Row className=" justify-content-center mt-5">
           <div className=" text-center mt-5">
             <h2>
-              Welcome <em className="text-decoration-underline">{user?.email}</em>.
+              Welcome <em className="text-decoration-underline">{user?.displayName || user?.email}</em>.
             </h2>
           </div>
           <Nav variant="tabs" className="m-5">
@@ -80,7 +109,7 @@ export default function Profile() {
                   {good_with_dogs ? 'good with dogs, ' : ''} {good_with_cats ? 'good with cats' : ''}
                 </p>
 
-                <Button className="px-5 py-3 m-5" href="/quiz">
+                <Button onClick={() => deletePreferences(idPreference)} className="px-5 py-3 m-5" href="/quiz">
                   Retake Quiz
                 </Button>
               </Col>

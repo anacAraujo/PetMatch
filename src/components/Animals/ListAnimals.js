@@ -56,7 +56,7 @@ export default function ListAnimals(props) {
     );
   }
   return (
-    <Row>
+    <Row className="my-4">
       {animals.map((animal) => (
         <CardAnimal
           key={animal.id}

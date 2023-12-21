@@ -11,6 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { getPreferencesDB } from '../utils/firebase';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -20,6 +21,16 @@ export default function Login() {
 
   const userContext = React.useContext(UserContext);
 
+  const getPreferences = async () => {
+    const result = await getPreferencesDB();
+
+    if (result) {
+      navigate('/profile');
+    } else {
+      navigate('/quiz');
+    }
+  };
+
   const loginWithUsernameAndPassword = async (e) => {
     e.preventDefault();
 
@@ -27,8 +38,9 @@ export default function Login() {
       await signInWithEmailAndPassword(auth, email, password);
       userContext.setIsLogged(true);
 
-      // TODO verify if user has preferences - redirect to quiz if not
-      navigate('/quiz');
+      // verify if user has preferences - redirect to quiz if not
+
+      await getPreferences();
     } catch {
       setNotice('You entered a wrong username or password.');
     }
@@ -39,14 +51,13 @@ export default function Login() {
       await signInWithPopup(auth, googleProvider);
       userContext.setIsLogged(true);
 
-      // TODO verify if user has preferences - redirect to quiz if not
-      navigate('/quiz');
+      // verify if user has preferences - redirect to quiz if not
+      await getPreferences();
     } catch {
       setNotice('Sorry, something went wrong. Please try again.');
     }
   };
 
-  // TODO remove remember me checkbox and forget password link
   return (
     <Container>
       <Row className="m-5 no-gutters shadow-lg">
@@ -76,16 +87,6 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </div>
-            <div className="d-flex align-items-center justify-content-between mt-3">
-              <Form.Check
-                className="mb-3 "
-                type="checkbox"
-                id="default-checkbox"
-                label="Remember Me" //TODO
-              />
-              <Link>Forget Password?</Link>
-              {/* TODO: Add password reset functionality */}
             </div>
             <div className="d-grid gap-2 my-3">
               <Button variant="primary" onClick={(e) => loginWithUsernameAndPassword(e)}>

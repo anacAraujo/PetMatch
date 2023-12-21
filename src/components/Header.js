@@ -1,16 +1,16 @@
 import { Outlet, Link } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { IoPersonCircleSharp } from 'react-icons/io5';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { auth } from '../utils/firebase';
+import { UserContext } from '../context/UserContext';
 
 export default function Header() {
-  useEffect(() => {}, [auth]);
+  const userContext = React.useContext(UserContext);
 
-  if (auth.currentUser) {
+  if (userContext.isLogged) {
     return (
       <div>
         <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">

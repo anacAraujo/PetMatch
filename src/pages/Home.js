@@ -10,7 +10,7 @@ import '../assets/styles/pages/Home.scss'; // Importing the SCSS styles for the 
 
 // Defining the Home component
 export default function Home() {
-  console.log(auth?.currentUser);
+  console.log('HOME currentUser: ', auth?.currentUser);
   return (
     <div>
       <header className="header">

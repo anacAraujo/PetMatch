@@ -18,16 +18,16 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [notice, setNotice] = useState('');
 
-  const value = React.useContext(UserContext);
+  const userContext = React.useContext(UserContext);
 
   const loginWithUsernameAndPassword = async (e) => {
     e.preventDefault();
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      value.func(true);
+      userContext.setIsLogged(true);
 
-      //TODO: verify if user has preferences - redirect to quiz if not
+      // TODO verify if user has preferences - redirect to quiz if not
       navigate('/quiz');
     } catch {
       setNotice('You entered a wrong username or password.');
@@ -37,13 +37,16 @@ export default function Login() {
   const signUpWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      value.func(true);
+      userContext.setIsLogged(true);
+
+      // TODO verify if user has preferences - redirect to quiz if not
       navigate('/quiz');
     } catch {
       setNotice('Sorry, something went wrong. Please try again.');
     }
   };
 
+  // TODO remove remember me checkbox and forget password link
   return (
     <Container>
       <Row className="m-5 no-gutters shadow-lg">

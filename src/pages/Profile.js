@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { auth, db } from '../utils/firebase';
+import { auth, getPreferencesDB, deletePreferencesDB } from '../utils/firebase';
 import { signOut } from 'firebase/auth';
 import React, { useEffect } from 'react';
 import { Nav, Container, Row, Col, Button, Image } from 'react-bootstrap';
@@ -9,58 +9,53 @@ import Footer from '../components/Footer';
 import { UserContext } from '../context/UserContext';
 import cat from '../assets/images/profile-cat.jpg';
 import dog from '../assets/images/profile-dog.jpg';
-import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore';
 
 export default function Profile() {
   const navigate = useNavigate();
   const user = auth.currentUser;
 
-  const value = React.useContext(UserContext);
+  const userContext = React.useContext(UserContext);
 
-  const { type, age, size, gender, good_with_children, good_with_dogs, good_with_cats } = JSON.parse(
-    localStorage.getItem('quizResponse')
-  );
+  const [preferences, setPreferences] = useState({});
 
-  const [idPreference, setIdPreferences] = useState('');
-  const preferencesCollectionRef = collection(db, 'preferences');
+  const { type, age, size, gender, good_with_children, good_with_dogs, good_with_cats } = preferences;
 
   useEffect(() => {
     const getPreferences = async () => {
-      console.log(user);
-      try {
-        const data = await getDocs(preferencesCollectionRef);
-        const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userPreferences = filteredData.filter((item) => item.id_user === user.uid);
+      const result = await getPreferencesDB();
+      setPreferences(result);
 
-        console.log('userPreferences', userPreferences);
+      console.log('get preferences result: ', result);
 
-        setIdPreferences(userPreferences[0].id);
-
-        console.log('idPreferences', idPreference);
-      } catch (error) {
-        console.error(error);
+      if (!result) {
+        navigate('/quiz');
       }
     };
     getPreferences();
+
+    setTimeout(() => {
+      document.getElementById('myMatches')?.click();
+    }, 500);
   }, []);
 
-  const [selectedTab, setSelectedTab] = useState('My Matches');
-  const handleTabClick = (tabName) => {
-    setSelectedTab(tabName);
-  };
+  const [selectedTab, setSelectedTab] = useState('My Information');
 
-  const deletePreferences = async (id) => {
-    const preferencesDoc = doc(db, 'preferences', id);
-    await deleteDoc(preferencesDoc);
+  const handleRetakeClick = async () => {
+    await deletePreferencesDB();
+    navigate('/quiz');
   };
 
   const logoutUser = async (e) => {
     e.preventDefault();
 
     await signOut(auth);
-    value.func(false);
+    userContext.setIsLogged(false);
     navigate('/');
   };
+
+  if (!userContext.isLogged) {
+    navigate('/login');
+  }
 
   return (
     <>
@@ -73,13 +68,15 @@ export default function Profile() {
           </div>
           <Nav variant="tabs" className="m-5">
             <Nav.Item>
-              <Nav.Link onClick={() => handleTabClick('My Information')}>My Information</Nav.Link>
+              <Nav.Link onClick={() => setSelectedTab('My Information')}>My Information</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link onClick={() => handleTabClick('My Preferences')}>My Preferences</Nav.Link>
+              <Nav.Link onClick={() => setSelectedTab('My Preferences')}>My Preferences</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link onClick={() => handleTabClick('My Matches')}>My Matches</Nav.Link>
+              <Nav.Link id="myMatches" onClick={() => setSelectedTab('My Matches')}>
+                My Matches
+              </Nav.Link>
             </Nav.Item>
           </Nav>
         </Row>
@@ -109,7 +106,7 @@ export default function Profile() {
                   {good_with_dogs ? 'good with dogs, ' : ''} {good_with_cats ? 'good with cats' : ''}
                 </p>
 
-                <Button onClick={() => deletePreferences(idPreference)} className="px-5 py-3 m-5" href="/quiz">
+                <Button onClick={() => handleRetakeClick()} className="px-5 py-3 m-5">
                   Retake Quiz
                 </Button>
               </Col>

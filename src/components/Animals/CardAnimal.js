@@ -5,7 +5,7 @@ import noImg from '../../assets/images/no-photo-found.png';
 import { Link } from 'react-router-dom';
 
 export default function CardAnimal(props) {
-  let { type, name, breed, age, photo, gender, description, organization_id, link } = props;
+  let { type, name, breed, age, photo, gender, description, link } = props;
 
   if (!description) {
     description = `Hi there! My name is ${name}, and I am a cute pet looking for a home! Please adopt me! :)`;
@@ -39,11 +39,6 @@ export default function CardAnimal(props) {
         <Card.Body>
           <Card.Link style={{ textDecoration: 'none', color: 'inherit' }}>
             <Link to={`/breedinfo/${type}/${breed}`}>Breed: {breed}</Link>
-          </Card.Link>
-        </Card.Body>
-        <Card.Body>
-          <Card.Link style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Link to={`/organization/${organization_id}`}>See organization</Link>
           </Card.Link>
         </Card.Body>
         <Card.Body>

@@ -63,30 +63,6 @@ async function getAnimals(filters) {
   return [];
 }
 
-async function getOrganizations() {
-  try {
-    let token = await getToken();
-
-    const response = await fetch(`https://api.petfinder.com/v2/organizations?limit=100`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: 'Bearer ' + token,
-      },
-    });
-
-    const result = await response.json();
-    const organizations = [];
-    result.organizations.forEach((org) => {
-      organizations[org.id] = org.name;
-    });
-    return organizations;
-  } catch (error) {
-    console.error('Error when trying to fetch organization: ', error);
-  }
-  return [];
-}
-
 async function getBreeds(type = 'dog') {
   try {
     // TODO try get from localStorage
@@ -106,9 +82,9 @@ async function getBreeds(type = 'dog') {
     // TODO set in localStorage (with some expire time)
     return Object.values(result.breeds);
   } catch (error) {
-    console.error('Error when trying to fetch organization: ', error);
+    console.error('Error when trying to fetch breeds: ', error);
   }
   return [];
 }
 
-module.exports = { getAnimals, getOrganizations, getBreeds };
+module.exports = { getAnimals, getBreeds };

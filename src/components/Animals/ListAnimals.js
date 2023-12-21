@@ -71,7 +71,6 @@ export default function ListAnimals(props) {
           photo={animal.photos[0]}
           gender={animal.gender}
           description={animal.description}
-          organization_id={animal.organization_id}
           link={animal.url}
         ></CardAnimal>
       ))}

@@ -82,7 +82,7 @@ export default function Profile() {
         </Row>
         <Row>
           {selectedTab === 'My Information' && (
-            <Col>
+            <Col className="my-5">
               <h3>My Information</h3>
               <p>Email: {user?.email}</p>
               <Button className="my-5 px-4" onClick={(e) => logoutUser(e)}>

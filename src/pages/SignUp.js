@@ -73,7 +73,7 @@ export default function SignUp() {
           </Form>
         </Col>
         <Col>
-          <Image rounded src={signUpImg} className="img-fluid"></Image>
+          <Image rounded src={signUpImg} fluid></Image>
         </Col>
       </Row>
     </Container>

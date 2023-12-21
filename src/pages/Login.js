@@ -11,6 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 import { getPreferencesDB } from '../utils/firebase';
 
 export default function Login() {
@@ -62,7 +63,7 @@ export default function Login() {
     <Container>
       <Row className="m-5 no-gutters shadow-lg">
         <Col className=" d-none d-md-block">
-          <img src={loginImg} className="img-fluid" />
+          <Image src={loginImg} fluid alt="dog" />
         </Col>
         <Col className=" g-white p-5">
           {'' !== notice && (

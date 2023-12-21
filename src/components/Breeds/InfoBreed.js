@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ninjas from '../../utils/ninjas';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Image from 'react-bootstrap/Image';
 
 export default function InfoBreed(props) {
   const { type, breed } = props;
@@ -26,7 +27,7 @@ export default function InfoBreed(props) {
       {infoBreed.map((info, idx) => (
         <Row key={idx} className="m-5">
           <Col>
-            <img src={info.image_link} alt={info.name} style={{ width: '400px', height: 'auto' }} />
+            <Image src={info.image_link} alt={info.name} style={{ width: '400px', height: 'auto' }} />
           </Col>
           <Col>
             {type === 'dog' ? (

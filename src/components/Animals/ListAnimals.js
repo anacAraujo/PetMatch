@@ -38,7 +38,12 @@ export default function ListAnimals(props) {
   }, [breed]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <Row className="my-5">
+        <h3 className="my-5">Loading...</h3>
+        <div className="spinner-border text-primary m-auto my-5" role="status"></div>
+      </Row>
+    );
   }
 
   if (animals.length === 0) {

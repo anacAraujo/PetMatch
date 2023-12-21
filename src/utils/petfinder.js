@@ -89,6 +89,8 @@ async function getOrganizations() {
 
 async function getBreeds(type = 'dog') {
   try {
+    // TODO try get from localStorage
+
     let token = await getToken();
 
     const response = await fetch(`https://api.petfinder.com/v2/types/${type}/breeds`, {
@@ -100,6 +102,8 @@ async function getBreeds(type = 'dog') {
     });
 
     const result = await response.json();
+
+    // TODO set in localStorage (with some expire time)
     return Object.values(result.breeds);
   } catch (error) {
     console.error('Error when trying to fetch organization: ', error);

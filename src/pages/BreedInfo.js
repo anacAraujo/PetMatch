@@ -42,7 +42,7 @@ export default function BreedInfo() {
 
         <Row>
           <h3 className="m-3">Some {breed}s available</h3>
-          <ListAnimals type={type} breed={breed}></ListAnimals>
+          <ListAnimals type={type} breed={breed} limit={8}></ListAnimals>
         </Row>
       </Container>
       <Footer></Footer>

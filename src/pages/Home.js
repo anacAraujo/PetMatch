@@ -8,7 +8,6 @@ import { auth } from '../utils/firebase';
 
 import '../assets/styles/pages/Home.scss';
 
-// Defining the Home component
 export default function Home() {
   console.log('HOME currentUser: ', auth?.currentUser);
   return (

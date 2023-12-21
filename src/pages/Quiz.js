@@ -62,7 +62,6 @@ export default function Quiz() {
     setGood_with_children(e.target.checked);
   };
 
-  // TODO refactor
   const handleGood_with_dogsChange = (e) => {
     setGood_with_dogs(e.target.checked);
   };
@@ -132,7 +131,7 @@ export default function Quiz() {
                       type="checkbox"
                       label="Good with dogs"
                       checked={good_with_dogs}
-                      onChange={(e) => setGood_with_dogs(e.target.checked)}
+                      onChange={handleGood_with_dogsChange}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" id="good_with_cats">
@@ -140,7 +139,7 @@ export default function Quiz() {
                       type="checkbox"
                       label="Good with cats"
                       checked={good_with_cats}
-                      onChange={(e) => setGood_with_cats(e.target.checked)}
+                      onChange={handleGood_with_catsChange}
                     />
                   </Form.Group>
                 </div>

@@ -8,12 +8,13 @@ import { Image } from 'react-bootstrap';
 import image from '../assets/images/quiz.jpg';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { collection, addDoc } from 'firebase/firestore';
-import { db, auth } from '../utils/firebase';
+import { setPreferencesDB } from '../utils/firebase';
 import Footer from '../components/Footer';
 
 export default function Quiz() {
   const navigate = useNavigate();
+
+  // TODO get current preferences from DB, to fill the form
 
   const [type, setType] = useState('cat');
   const [age, setAge] = useState('baby');
@@ -22,8 +23,6 @@ export default function Quiz() {
   const [good_with_children, setGood_with_children] = useState(false);
   const [good_with_dogs, setGood_with_dogs] = useState(false);
   const [good_with_cats, setGood_with_cats] = useState(false);
-
-  const preferencesCollectionRef = collection(db, 'preferences');
 
   const setPreferences = async (e) => {
     e.preventDefault();
@@ -36,16 +35,10 @@ export default function Quiz() {
       good_with_children,
       good_with_dogs,
       good_with_cats,
-      id_user: auth.currentUser.uid,
     };
 
-    localStorage.setItem('quizResponse', JSON.stringify(preferences));
+    await setPreferencesDB(preferences);
 
-    try {
-      await addDoc(preferencesCollectionRef, preferences);
-    } catch (error) {
-      console.error(error);
-    }
     navigate(`/profile `);
   };
 
@@ -66,15 +59,16 @@ export default function Quiz() {
   };
 
   const handleGood_with_childrenChange = (e) => {
-    setGood_with_children(e.target.value);
+    setGood_with_children(e.target.checked);
   };
 
+  // TODO refactor
   const handleGood_with_dogsChange = (e) => {
-    setGood_with_dogs(e.target.value);
+    setGood_with_dogs(e.target.checked);
   };
 
   const handleGood_with_catsChange = (e) => {
-    setGood_with_cats(e.target.value);
+    setGood_with_cats(e.target.checked);
   };
 
   return (
@@ -130,7 +124,7 @@ export default function Quiz() {
                       type="checkbox"
                       label="Good with children"
                       checked={good_with_children}
-                      onChange={(e) => setGood_with_children(e.target.checked)}
+                      onChange={handleGood_with_childrenChange}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" id="good_with_dogs">

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
-import { getFirestore, getDocs, collection } from 'firebase/firestore';
+import { getFirestore, doc, setDoc, getDoc, deleteDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAJULtP4XEWwn2vS6fCTebTWuCrKRAwuto',
@@ -20,21 +20,48 @@ const googleProvider = new GoogleAuthProvider();
 const db = getFirestore(app);
 
 // Get a list of preferences from the database
-const getPreferences = async () => {
-  const user = auth.currentUser;
+async function getPreferencesDB() {
+  console.log('getPreferencesDB currentUser: ', auth?.currentUser);
 
-  const preferencesCollectionRef = collection(db, 'preferences');
-
-  console.log(user);
   try {
-    const data = await getDocs(preferencesCollectionRef);
-    const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    const userPreferences = filteredData.filter((item) => item.id_user === user.uid);
+    const localPreferences = localStorage.getItem('preferences');
+    if (localPreferences) {
+      return JSON.parse(localPreferences);
+    }
 
-    return userPreferences;
+    const docRef = doc(db, 'preferences', auth.currentUser.uid);
+    const userPreferences = await getDoc(docRef);
+    console.log('firestore userPreferences: ', userPreferences.data());
+    return userPreferences.data();
   } catch (error) {
-    console.error(error);
+    console.error('Error getting preferences: ', error.stack);
   }
-};
+}
 
-export { auth, googleProvider, db, getPreferences };
+async function setPreferencesDB(preferences) {
+  console.log('setPreferencesDB currentUser: ', auth?.currentUser);
+
+  try {
+    const docRef = doc(db, 'preferences', auth.currentUser.uid);
+    await setDoc(docRef, preferences);
+
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+  } catch (error) {
+    console.error('Error setting preferences: ', error.stack);
+  }
+}
+
+async function deletePreferencesDB() {
+  console.log('deletePreferencesDB currentUser: ', auth?.currentUser);
+
+  try {
+    const docRef = doc(db, 'preferences', auth.currentUser.uid);
+    await deleteDoc(docRef);
+
+    localStorage.removeItem('preferences');
+  } catch (error) {
+    console.error('Error deleting preferences: ', error.stack);
+  }
+}
+
+export { auth, googleProvider, db, getPreferencesDB, setPreferencesDB, deletePreferencesDB };

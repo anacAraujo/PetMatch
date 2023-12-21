@@ -8,6 +8,8 @@ import cat from '../../assets/images/sorry-cat.jpg';
 import dog from '../../assets/images/sorry-dog.jpg';
 
 export default function ListAnimals(props) {
+  const [isLoading, setIsLoading] = useState(true);
+
   const [animals, setAnimals] = useState([]);
 
   let { type, breed, age, size, gender, good_with_children, good_with_dogs, good_with_cats, limit, sort } = props;
@@ -29,14 +31,16 @@ export default function ListAnimals(props) {
 
       const result = await petfinder.getAnimals(filters);
       setAnimals(result);
+      setIsLoading(false);
     }
 
     getAnimals();
   }, [breed]);
 
-  if (!animals) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
+
   if (animals.length === 0) {
     return (
       <Row className="mx-5 mb-5">

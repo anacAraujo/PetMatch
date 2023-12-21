@@ -11,44 +11,40 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { UserContext } from './context/UserContext';
-import OrganizationsContext from './context/OrganizationsContext';
-import * as petfinder from './utils/petfinder';
 
 function App() {
-  const [organizations, setOrganizations] = useState({});
+  const [isLogged, setIsLogged] = useState(false);
 
-  const [isLog, setLog] = useState(false);
-  const updateIsLog = (dadosfilho) => {
-    setLog(dadosfilho);
-  };
+  function handleIsLoggedUpdate(isLogged) {
+    setIsLogged(isLogged);
+    localStorage.setItem('isLogged', JSON.stringify(isLogged));
+  }
 
   useEffect(() => {
-    async function fetchOrganizations() {
-      const orgs = await petfinder.getOrganizations();
-      setOrganizations(orgs);
+    const localIsLogged = localStorage.getItem('isLogged');
+    if (localIsLogged) {
+      setIsLogged(JSON.parse(localIsLogged));
     }
-    fetchOrganizations();
+    console.log('localIsLogged: ', localIsLogged);
   }, []);
 
   return (
-    <UserContext.Provider value={{ isLogado: isLog, func: updateIsLog }}>
-      <OrganizationsContext.Provider value={organizations}>
-        <div className="App">
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Header></Header>}>
-                <Route index element={<HomePage></HomePage>}></Route>
-                <Route path="/login" element={<Login></Login>}></Route>
-                <Route path="/signup" element={<SignUp></SignUp>}></Route>
-                <Route path="/profile" element={<Profile></Profile>}></Route>
-                <Route path="/breedinfo/:type/:breed" element={<BreedInfo></BreedInfo>}></Route>
-                <Route path="/about" element={<About></About>}></Route>
-                <Route path="/quiz" element={<Quiz></Quiz>}></Route>
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </div>
-      </OrganizationsContext.Provider>
+    <UserContext.Provider value={{ isLogged: isLogged, setIsLogged: handleIsLoggedUpdate }}>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Header></Header>}>
+              <Route index element={<HomePage></HomePage>}></Route>
+              <Route path="/login" element={<Login></Login>}></Route>
+              <Route path="/signup" element={<SignUp></SignUp>}></Route>
+              <Route path="/profile" element={<Profile></Profile>}></Route>
+              <Route path="/breedinfo/:type/:breed" element={<BreedInfo></BreedInfo>}></Route>
+              <Route path="/about" element={<About></About>}></Route>
+              <Route path="/quiz" element={<Quiz></Quiz>}></Route>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
     </UserContext.Provider>
   );
 }

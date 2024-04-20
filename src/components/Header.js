@@ -23,8 +23,12 @@ export default function Header() {
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <NavDropdown title="Breeds" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/breedinfo/cat/American Shorthair">Cats</NavDropdown.Item>
-                    <NavDropdown.Item href="/breedinfo/dog/Affenpinscher">Dogs</NavDropdown.Item>
+                    <Link to={'/breedinfo/cat/Abyssinian'} style={{ textDecoration: 'none' }}>
+                      <NavDropdown.Item as={'span'}>Catss</NavDropdown.Item>
+                    </Link>
+                    <Link to={'/breedinfo/dog/Affenpinscher'} style={{ textDecoration: 'none' }}>
+                      <NavDropdown.Item as={'span'}>Dogs</NavDropdown.Item>
+                    </Link>
                   </NavDropdown>
                 </li>
                 <li className="nav-item">
@@ -60,8 +64,12 @@ export default function Header() {
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
                     <NavDropdown title="Breeds" id="basic-nav-dropdown">
-                      <NavDropdown.Item href="/breedinfo/cat/American Shorthair">Cats</NavDropdown.Item>
-                      <NavDropdown.Item href="/breedinfo/dog/Affenpinscher">Dogs</NavDropdown.Item>
+                      <Link to={'/breedinfo/cat/Abyssinian'} style={{ textDecoration: 'none' }}>
+                        <NavDropdown.Item as={'span'}>Catss</NavDropdown.Item>
+                      </Link>
+                      <Link to={'/breedinfo/dog/Affenpinscher'} style={{ textDecoration: 'none' }}>
+                        <NavDropdown.Item as={'span'}>Dogs</NavDropdown.Item>
+                      </Link>
                     </NavDropdown>
                   </li>
                   <li className="nav-item">

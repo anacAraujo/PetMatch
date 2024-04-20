@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import cat from '../assets/images/about-cat.jpg';
 import dog from '../assets/images/about-dog.jpg';
 import { auth } from '../utils/firebase';
+import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
@@ -66,9 +67,11 @@ export default function About() {
                   not just matching people to pets; we're creating lifelong connections that warm hearts and create
                   tails that wag with happiness.
                 </p>
-                <Button className="my-3 px-5 py-3" variant="dark" href="/profile">
-                  Profile
-                </Button>
+                <Link to="/profile">
+                  <Button className="my-3 px-5 py-3" variant="dark" as="span">
+                    Profile
+                  </Button>
+                </Link>
               </>
             ) : (
               <>
@@ -79,9 +82,11 @@ export default function About() {
                   not just matching people to pets; we're creating lifelong connections that warm hearts and create
                   tails that wag with happiness.
                 </p>
-                <Button className="my-3 px-5 py-3" variant="dark" href="/login">
-                  Login
-                </Button>
+                <Link to="/login">
+                  <Button className="my-3 px-5 py-3" variant="dark" as="span">
+                    Login
+                  </Button>
+                </Link>
               </>
             )}
           </Col>

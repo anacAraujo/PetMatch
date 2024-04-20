@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import dog from '../assets/images/exemple-dog.jpg';
+import { Link } from 'react-router-dom';
 
 export default function Mission() {
   return (
@@ -18,9 +19,15 @@ export default function Mission() {
           experience. We strive to be the bridge that brings together individuals and their perfect animal companions,
           ensuring compatibility, happiness, and a lifetime of shared moments.
         </p>
-        <Button className="my-3 px-5 py-3" variant="primary" href="/about">
-          Learn more
-        </Button>
+        <p className="my-4">
+          Our mission is to help you find the perfect pet that will become a cherished member of your family. We believe
+          that every animal deserves a loving home, and every person deserves a loyal companion.
+        </p>
+        <Link to="/about">
+          <Button className="my-3 px-5 py-3" variant="primary" as="span">
+            Learn more
+          </Button>
+        </Link>
       </Col>
     </Row>
   );

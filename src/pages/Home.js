@@ -5,6 +5,7 @@ import ListAnimals from '../components/Animals/ListAnimals';
 import Mission from '../components/Mission';
 import Footer from '../components/Footer';
 import { auth } from '../utils/firebase';
+import { Link } from 'react-router-dom';
 
 import '../assets/styles/pages/Home.scss';
 
@@ -24,13 +25,17 @@ export default function Home() {
         <ListAnimals type={'dog'}></ListAnimals>
         <ListAnimals type={'cat'}></ListAnimals>
         {auth.currentUser ? (
-          <Button variant="primary" className="m-5 px-5 py-3" href="/profile">
-            See My Matches
-          </Button>
+          <Link to="/profile">
+            <Button variant="primary" className="m-5 px-5 py-3" as="span">
+              See My Matches
+            </Button>
+          </Link>
         ) : (
-          <Button variant="primary" className="m-5 px-5 py-3" href="/login">
-            See More
-          </Button>
+          <Link to="/login">
+            <Button variant="primary" className="m-5 px-5 py-3" as="span">
+              See More
+            </Button>
+          </Link>
         )}
       </Container>
 

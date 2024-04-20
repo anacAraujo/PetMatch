@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PetMatch/static/css/main.ad74d627.css",
-    "main.js": "/PetMatch/static/js/main.392efaa9.js",
+    "main.js": "/PetMatch/static/js/main.dbe24e23.js",
     "static/media/login-dog.jpg": "/PetMatch/static/media/login-dog.0cf914659c17a5388278.jpg",
     "static/media/sorry-dog.jpg": "/PetMatch/static/media/sorry-dog.a778e5c8e7d7e1202c38.jpg",
     "static/media/profile-dog.jpg": "/PetMatch/static/media/profile-dog.dc932f1249928967a1c6.jpg",
@@ -17,10 +17,10 @@
     "static/media/no-photo-found.png": "/PetMatch/static/media/no-photo-found.daee9968d3b223265fa4.png",
     "index.html": "/PetMatch/index.html",
     "main.ad74d627.css.map": "/PetMatch/static/css/main.ad74d627.css.map",
-    "main.392efaa9.js.map": "/PetMatch/static/js/main.392efaa9.js.map"
+    "main.dbe24e23.js.map": "/PetMatch/static/js/main.dbe24e23.js.map"
   },
   "entrypoints": [
     "static/css/main.ad74d627.css",
-    "static/js/main.392efaa9.js"
+    "static/js/main.dbe24e23.js"
   ]
 }

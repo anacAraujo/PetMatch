@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.3eecafe8.css",
-    "main.js": "/static/js/main.df146c4b.js",
-    "static/media/login-dog.jpg": "/static/media/login-dog.0cf914659c17a5388278.jpg",
-    "static/media/sorry-dog.jpg": "/static/media/sorry-dog.a778e5c8e7d7e1202c38.jpg",
-    "static/media/profile-dog.jpg": "/static/media/profile-dog.dc932f1249928967a1c6.jpg",
-    "static/media/about-cat.jpg": "/static/media/about-cat.be8e25208d936d23b95a.jpg",
-    "static/media/about-dog.jpg": "/static/media/about-dog.9dc96f2b13f81be82f8e.jpg",
-    "static/media/quiz.jpg": "/static/media/quiz.97a6dce906f1bbb47b79.jpg",
-    "static/media/exemple-dog.jpg": "/static/media/exemple-dog.a7349ce19bd5085bdebd.jpg",
-    "static/media/home-cats.jpg": "/static/media/home-cats.6dee151b97a46ea28683.jpg",
-    "static/media/quizz.jpg": "/static/media/quizz.8a3a9fe31a0ac9984139.jpg",
-    "static/media/sorry-cat.jpg": "/static/media/sorry-cat.ed12032ca45aadcde6c6.jpg",
-    "static/media/about.jpg": "/static/media/about.1add41480cfd3556e7e9.jpg",
-    "static/media/profile-cat.jpg": "/static/media/profile-cat.7de9388a7be96dd67bb6.jpg",
-    "static/media/no-photo-found.png": "/static/media/no-photo-found.daee9968d3b223265fa4.png",
-    "index.html": "/index.html",
-    "main.3eecafe8.css.map": "/static/css/main.3eecafe8.css.map",
-    "main.df146c4b.js.map": "/static/js/main.df146c4b.js.map"
+    "main.css": "/PetMatch/static/css/main.ad74d627.css",
+    "main.js": "/PetMatch/static/js/main.392efaa9.js",
+    "static/media/login-dog.jpg": "/PetMatch/static/media/login-dog.0cf914659c17a5388278.jpg",
+    "static/media/sorry-dog.jpg": "/PetMatch/static/media/sorry-dog.a778e5c8e7d7e1202c38.jpg",
+    "static/media/profile-dog.jpg": "/PetMatch/static/media/profile-dog.dc932f1249928967a1c6.jpg",
+    "static/media/about-cat.jpg": "/PetMatch/static/media/about-cat.be8e25208d936d23b95a.jpg",
+    "static/media/about-dog.jpg": "/PetMatch/static/media/about-dog.9dc96f2b13f81be82f8e.jpg",
+    "static/media/quiz.jpg": "/PetMatch/static/media/quiz.97a6dce906f1bbb47b79.jpg",
+    "static/media/exemple-dog.jpg": "/PetMatch/static/media/exemple-dog.a7349ce19bd5085bdebd.jpg",
+    "static/media/home-cats.jpg": "/PetMatch/static/media/home-cats.6dee151b97a46ea28683.jpg",
+    "static/media/quizz.jpg": "/PetMatch/static/media/quizz.8a3a9fe31a0ac9984139.jpg",
+    "static/media/sorry-cat.jpg": "/PetMatch/static/media/sorry-cat.ed12032ca45aadcde6c6.jpg",
+    "static/media/about.jpg": "/PetMatch/static/media/about.1add41480cfd3556e7e9.jpg",
+    "static/media/profile-cat.jpg": "/PetMatch/static/media/profile-cat.7de9388a7be96dd67bb6.jpg",
+    "static/media/no-photo-found.png": "/PetMatch/static/media/no-photo-found.daee9968d3b223265fa4.png",
+    "index.html": "/PetMatch/index.html",
+    "main.ad74d627.css.map": "/PetMatch/static/css/main.ad74d627.css.map",
+    "main.392efaa9.js.map": "/PetMatch/static/js/main.392efaa9.js.map"
   },
   "entrypoints": [
-    "static/css/main.3eecafe8.css",
-    "static/js/main.df146c4b.js"
+    "static/css/main.ad74d627.css",
+    "static/js/main.392efaa9.js"
   ]
 }

@@ -7,7 +7,7 @@ import BreedInfo from './pages/BreedInfo';
 import Header from './components/Header';
 import About from './pages/About';
 import Quiz from './pages/Quiz';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { UserContext } from './context/UserContext';
@@ -31,7 +31,7 @@ function App() {
   return (
     <UserContext.Provider value={{ isLogged: isLogged, setIsLogged: handleIsLoggedUpdate }}>
       <div className="App">
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="/" element={<Header></Header>}>
               <Route index element={<HomePage></HomePage>}></Route>
@@ -43,7 +43,7 @@ function App() {
               <Route path="/quiz" element={<Quiz></Quiz>}></Route>
             </Route>
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     </UserContext.Provider>
   );

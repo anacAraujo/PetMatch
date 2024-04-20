@@ -1,0 +1,37 @@
+.header {
+  background-image: url(../../images/home-cats.jpg);
+  background-repeat: no-repeat;
+  background-size: 100vw, auto;
+  object-fit: cover;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #f1f2eb;
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  margin-bottom: 5vh;
+}
+
+.header h1 {
+  color: #b1740f;
+  font-size: 100px;
+  margin: 2vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer {
+  background-color: black;
+  color: #f1f2eb;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+}

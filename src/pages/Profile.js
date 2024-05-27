@@ -49,6 +49,7 @@ export default function Profile() {
     e.preventDefault();
 
     await signOut(auth);
+    localStorage.clear();
     userContext.setIsLogged(false);
     navigate('/');
   };

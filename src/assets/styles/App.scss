@@ -11,14 +11,12 @@ button {
 }
 
 .form-style input {
-  border: 0;
-  height: 50px;
+  border: 1px solid $primary;
   border-radius: 0;
-  border-bottom: 1px solid #ebebeb;
 }
 
 .form-style input:focus {
-  border-bottom: 1px solid $primary;
+  border: 1px solid $primary;
   box-shadow: none;
   outline: 0;
   background-color: #ebebeb;
